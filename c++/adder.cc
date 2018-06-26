@@ -5,9 +5,9 @@ int a;
 int b;
 
 int main(){
-    cout<<"Enter first number:\n";
+    cout<<"Enter first number :: ";
     cin >> a;
-    cout<<"Enter second number\n";
+    cout<<"Enter second number :: ";
     cin>>b;
     cout<<"Result is "<<(a+b)<<endl;
     return 0;
