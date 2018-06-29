@@ -1,0 +1,6 @@
+#!/bin/bash
+
+g++ -o test $1
+./test
+rm test
+
