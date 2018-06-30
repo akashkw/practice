@@ -1,6 +1,6 @@
 #!/bin/bash
 
-g++ -o test $1
-./test
-rm test
+g++ -o tmp.out $1
+./tmp.out
+rm tmp.out
 
