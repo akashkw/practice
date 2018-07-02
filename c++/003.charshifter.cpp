@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// 003
+// 004
 // Test of implicit cast of char to int and explicit cast back to char
 // Reads in number and character, prints out character shifted by number
 
@@ -12,7 +12,7 @@ int main() {
     cin >> c;
     cout << "Please enter how much to shift it by" << endl;
     cin >> n;
-    cout << "Your character is " << char(n + c) << endl;
+    cout << "Your character is " << (char)(n + c) << endl;
     return 0;
 }
 
