@@ -1,6 +1,6 @@
 #!/bin/bash
 
-g++ -o tmp.out $1
+g++ -o tmp.out $1/main.cpp
 ./tmp.out
 rm tmp.out
 
