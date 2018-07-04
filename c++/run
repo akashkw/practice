@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Invoke this script, pass in exercise number as an argument
+# Usage Example
+# >>> sh run 001
+
 g++ -o tmp.out $1/main.cpp
 ./tmp.out
 rm tmp.out
