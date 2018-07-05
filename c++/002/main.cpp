@@ -2,16 +2,16 @@
 using namespace std;
 
 // 002
-// Read Num
+// read num
 // Test of cin
 // Reads in and prints out number
 
 int main() {
-    cout << endl << "002 - Read Num" << endl << endl;
+    cout << endl << "002 - read num" << endl << endl;
     int num;
-    cout << "Please enter a number" << endl;
+    cout << "Please enter a number :: ";
     cin >> num;
-    cout << "Your number is " << num << endl;
+    cout << endl << "Your number is :: " << num << endl << endl;
     return 0;
 }
 
