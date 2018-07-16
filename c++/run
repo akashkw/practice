@@ -1,10 +1,14 @@
 #!/bin/bash
 
 # Invoke this script, pass in exercise number as an argument
+# Run on successful lint
 # Usage Example
 # >>> sh run 001
 
+../styleguide/cpplint/cpplint.py $1/main.cpp
+
+if [ $? == 0 ]; then
 g++ -std=c++14 -o tmp.out $1/main.cpp
 ./tmp.out
 rm tmp.out
-
+fi
