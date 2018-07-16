@@ -1,5 +1,10 @@
+// Copyright 2018 Akash Kwatra
+
 #include <iostream>
-using namespace std;
+
+using std::cout;
+using std::cin;
+using std::endl;
 
 // 006
 // even odd
@@ -13,10 +18,9 @@ int main() {
     cout << "Please enter a number :: ";
     cin >> n;
     cout << endl;
-    if ( n%2 == 0 ){
+    if ( n%2 == 0 ) {
         cout << n << " is even";
-    }
-    else {
+    } else {
         cout << n << " is odd";
     }
     cout << endl << endl;

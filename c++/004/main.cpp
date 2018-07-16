@@ -1,5 +1,9 @@
+// Copyright 2018 Akash Kwatra
+
 #include <iostream>
-using namespace std;
+
+using std::cout;
+using std::endl;
 
 // 004
 // size checker

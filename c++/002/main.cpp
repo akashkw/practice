@@ -1,5 +1,10 @@
+// Copyright 2018 Akash Kwatra
+
 #include <iostream>
-using namespace std;
+
+using std::cout;
+using std::cin;
+using std::endl;
 
 // 002
 // read num

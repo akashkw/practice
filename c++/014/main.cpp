@@ -1,6 +1,10 @@
+// Copyright 2018 Akash Kwatra
+
 #include <iostream>
 
-using namespace std;
+using std::cout;
+using std::cin;
+using std::endl;
 
 // 014
 // array memory
@@ -10,25 +14,24 @@ using namespace std;
 int main() {
     cout << endl << "014 - array memory" << endl << endl;
 
-    int size;
+    int kSize;
+
     cout << "Enter the size of your array :: ";
-    cin >> size;
+    cin >> kSize;
     cout << endl;
-    
-    cout << "size = " << size << endl;
+    cout << "kSize = " << kSize << endl;
     cout << endl;
 
-    int array[size];
-
+    int *array = new int[kSize];
     cout << "array = " << array << endl;
-    
+
     // Populate array with values
-    for(int i = 0; i < size; i++){
+    for (int i = 0; i < kSize; i++) {
         array[i] = i * 2;
     }
     cout << endl;
 
-    for(int i = 0; i < size; i++){
+    for (int i = 0; i < kSize; i++) {
         cout << "array[" << i << "] = " << array[i];
         cout << "    |    &array[" << i << "] = " << &array[i] << endl;
     }
@@ -38,7 +41,7 @@ int main() {
     cout << "p = " << p << endl;
     cout << endl;
 
-    for(int i = 0; i < size; i++){
+    for (int i = 0; i < kSize; i++) {
         cout << "*(p + " << i << ") = " << *(p+i);
         cout << "    |    (p + " << i << ") = " << (p+i) << endl;
     }

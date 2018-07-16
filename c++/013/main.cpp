@@ -1,6 +1,10 @@
+// Copyright 2018 Akash Kwatra
+
 #include <iostream>
 
-using namespace std;
+using std::cout;
+using std::cin;
+using std::endl;
 
 // 013
 // make pointer
@@ -9,11 +13,11 @@ using namespace std;
 
 int main() {
     cout << endl << "013 - make pointer" << endl << endl;
-    
+
     int x;
     cout << "Please enter a number (x) :: ";
     cin >> x;
-    
+
     cout << endl << "Creating pointer (p) to your number (x)" << endl << endl;
 
     cout << "Size of int x is " << sizeof(int) << " bytes" << endl;

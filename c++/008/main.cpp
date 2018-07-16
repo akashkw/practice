@@ -1,5 +1,10 @@
+// Copyright 2018 Akash Kwatra
+
 #include <iostream>
-using namespace std;
+
+using std::cout;
+using std::cin;
+using std::endl;
 
 // 008
 // ternary even odd
@@ -13,7 +18,7 @@ int main() {
     cout << "Please enter a number :: ";
     cin >> n;
     cout << endl;
-    ( n%2 == 0 ) ? cout << n << " is even" : cout << n << " is odd";
+    (n%2 == 0) ? cout << n << " is even" : cout << n << " is odd";
     cout << endl << endl;
     return 0;
 }

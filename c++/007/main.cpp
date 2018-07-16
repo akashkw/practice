@@ -1,5 +1,10 @@
+// Copyright 2018 Akash Kwatra
+
 #include <iostream>
-using namespace std;
+
+using std::cout;
+using std::cin;
+using std::endl;
 
 // 007
 // grade checker
@@ -13,7 +18,7 @@ int main() {
     cout << "Please enter your grade :: ";
     cin >> c;
     cout << endl;
-    switch(c){
+    switch (c) {
         case 'A': case 'a':
             cout << "You did excellent";
             break;

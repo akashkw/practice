@@ -1,5 +1,10 @@
+// Copyright 2018 Akash Kwatra
+
 #include <iostream>
-using namespace std;
+
+using std::cout;
+using std::cin;
+using std::endl;
 
 // 010
 // infinite respect
@@ -8,12 +13,12 @@ using namespace std;
 
 int main() {
     cout << endl << "010 - infinite respect" << endl << endl;
-    
+
     char x;
-    for( ; ; ){
+    for ( ; ; ) {
        cout << "press F to pay respects" << endl;
        cin >> x;
-       if(x == 'F' || x == 'f'){
+       if (x == 'F' || x == 'f') {
            break;
        }
     }

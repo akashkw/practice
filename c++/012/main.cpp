@@ -1,26 +1,29 @@
-#include <iostream>
-#include <chrono>
+// Copyright 2018 Akash Kwatra
 
-using namespace std;
+#include <iostream>
+
+using std::cout;
+using std::cin;
+using std::endl;
 
 // 012
 // inline sum
 // Test out inline functions, as well as chrono
-// Takes in a number, calculates sum with and without an inline function, reports times
+// Takes a number, calculates sum in different ways, reports times
 
-int sum(int x, int y){
+int sum(int x, int y) {
     return x + y;
 }
 
-inline int inline_sum(int x, int y){
+inline int inline_sum(int x, int y) {
     return x + y;
 }
 
 int main() {
     cout << endl << "012 - inline sum" << endl << endl;
 
-    // TODO implement timer using chrono
-    
+    // TODO(akashkw): implement timer using chrono
+
     int x, y;
     cout << "Please enter first number :: ";
     cin >> x;

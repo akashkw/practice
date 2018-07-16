@@ -1,5 +1,9 @@
+// Copyright 2018 Akash Kwatra
+
 #include <iostream>
-using namespace std;
+using std::cout;
+using std::cin;
+using std::endl;
 
 // 003
 // char shifter
@@ -14,7 +18,8 @@ int main() {
     cin >> c;
     cout << "Please enter how much to shift it by :: ";
     cin >> n;
-    cout << endl << "Your character is :: " << (char)(n + c) << endl << endl;
+    cout << endl << "Your character is :: "
+         << static_cast<char>(n + c) << endl << endl;
     return 0;
 }
 
