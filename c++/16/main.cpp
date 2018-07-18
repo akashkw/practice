@@ -2,11 +2,14 @@
 
 #include <iostream>
 #include <array>
+#include <iterator>
+#include <algorithm>
 
 using std::cout;
 using std::cin;
 using std::endl;
 using std::array;
+using std::sort;
 
 // 016
 // array iterators
@@ -24,7 +27,7 @@ void printArray(const array<int, 5> &n) {
 int main() {
     cout << endl << "016 - array iterators" << endl << endl;
 
-    array<int, 5> n = { 2, 4, 6, 8, 10};
+    array<int, 5> n = { 6, 4, 2, 10, 8};
     printArray(n);
 
     cout << "n.begin() = " << n.begin() << endl;
@@ -35,6 +38,10 @@ int main() {
     }
 
     cout << endl;
+    cout << "sort(n.begin(), n.end())" << endl;
+    sort(n.begin(), n.end());
+    printArray(n);
+
     return 0;
 }
 
