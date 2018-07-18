@@ -7,8 +7,7 @@
 
 ../styleguide/cpplint/cpplint.py $1/main.cpp
 
-if [ $? == 0 ]; then
 g++ -std=c++14 -o tmp.out $1/main.cpp
 ./tmp.out
 rm tmp.out
-fi
+
