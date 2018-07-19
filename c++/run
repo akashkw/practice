@@ -5,7 +5,7 @@
 # Usage Example
 # >>> sh run 001
 
-../styleguide/cpplint/cpplint.py $1/main.cpp
+./cpplint.py $1/main.cpp
 
 g++ -std=c++14 -o tmp.out $1/main.cpp
 ./tmp.out
