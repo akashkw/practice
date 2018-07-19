@@ -3,7 +3,7 @@
 # Invoke this script, pass in exercise number as an argument
 # Run on successful lint
 # Usage Example
-# >>> sh run 001
+# >>> sh run 15
 
 ./cpplint.py $1/main.cpp
 
