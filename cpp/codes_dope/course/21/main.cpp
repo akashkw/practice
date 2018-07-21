@@ -10,8 +10,8 @@ using std::string;
 
 // 21
 // struct bois
-// Test out some simple define statements
-// Print out PI, read in two numbers and print average
+// Test out the creation and usage of structs
+// Create a and array of boi structs and print them out
 
 struct boi {
     int age;
