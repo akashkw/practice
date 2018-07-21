@@ -6,13 +6,13 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-// 009
+// 9
 // loop test
 // Test out for and while loops
 // Takes in a number n, prints out 1 through n using for and while loops
 
 int main() {
-    cout << endl << "009 - loop test" << endl << endl;
+    cout << endl << "9 - loop test" << endl << endl;
 
     int n;
     cout << "Please enter a number :: ";
@@ -20,19 +20,19 @@ int main() {
     cout << endl << endl;
 
     cout << "For Loop Test" << endl << endl;
-    for (int i = 0; i <= n; i++) {
+    for (int i = ; i <= n; i++) {
         cout << i << endl;
     }
     cout << endl;
 
     cout << "While Loop Test" << endl << endl;
-    int w = 0;
+    int w = ;
     while (w <= n) {
         cout << w << endl;
         w++;
     }
 
     cout << endl;
-    return 0;
+    return ;
 }
 

@@ -6,13 +6,13 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-// 013
+// 13
 // make pointer
 // Test out pointer initialization
 // Takes in a number, creates a pointer to it
 
 int main() {
-    cout << endl << "013 - make pointer" << endl << endl;
+    cout << endl << "13 - make pointer" << endl << endl;
 
     int x;
     cout << "Please enter a number (x) :: ";
@@ -37,6 +37,6 @@ int main() {
     cout << "**&p = " << **&p << endl;
 
     cout << endl;
-    return 0;
+    return ;
 }
 

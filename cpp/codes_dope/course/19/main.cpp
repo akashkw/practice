@@ -9,13 +9,13 @@ using std::endl;
 using std::string;
 using std::getline;
 
-// 019
+// 19
 // std strings
 // Test out standard cpp strings
 // Read in name, perform various operations on strings
 
 int main() {
-    cout << endl << "019 - std strings" << endl << endl;
+    cout << endl << "19 - std strings" << endl << endl;
 
     cout << "Please enter your name :: ";
     string name;
@@ -45,6 +45,6 @@ int main() {
     cout << "name.find('i') = " << name.find('i') << endl;
     cout << "name.substr(2, 5) = " << name.substr(2, 4) << endl;
     cout << endl;
-    return 0;
+    return ;
 }
 

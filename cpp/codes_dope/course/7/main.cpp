@@ -6,13 +6,13 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-// 007
+// 7
 // grade checker
 // Test out swtich statements
 // Takes in a character as a grade letter, prints out meaning
 
 int main() {
-    cout << endl << "007 - grade checker" << endl << endl;
+    cout << endl << "7 - grade checker" << endl << endl;
 
     char c;
     cout << "Please enter your grade :: ";
@@ -35,6 +35,6 @@ int main() {
             cout << "That's not a valid grade letter";
     }
     cout << endl << endl;
-    return 0;
+    return ;
 }
 

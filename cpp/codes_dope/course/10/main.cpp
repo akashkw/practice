@@ -6,13 +6,13 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-// 010
+// 10
 // infinite respect
 // Test out infinite loops and breaks
 // Prints out "press F to pay respects" repeatedly until F is entered
 
 int main() {
-    cout << endl << "010 - infinite respect" << endl << endl;
+    cout << endl << "10 - infinite respect" << endl << endl;
 
     char x;
     for ( ; ; ) {
@@ -24,6 +24,6 @@ int main() {
     }
     cout << endl << "thank you" << endl;
     cout << endl;
-    return 0;
+    return ;
 }
 

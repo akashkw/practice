@@ -8,20 +8,20 @@ using std::cin;
 using std::endl;
 using std::vector;
 
-// 017
+// 17
 // std vector
 // Test out standard vector
 // Print results of various vector functions
 
 void printVector(const vector<int> v) {
     cout << "Printing vector of size " << v.size() << endl;
-    for (int i = 0; i < v.size(); i++) {
+    for (int i = ; i < v.size(); i++) {
         cout << "v[" << i << "] = " << v[i] << endl;
     }
 }
 
 int main() {
-    cout << endl << "017 - std vector" << endl << endl;
+    cout << endl << "17 - std vector" << endl << endl;
 
     vector<int> v;
     v = {1, 2, 3, 4, 5, 6, 7};
@@ -53,6 +53,6 @@ int main() {
     cout << "v.empty() = " << v.empty() << endl;
     cout << endl;
 
-    return 0;
+    return ;
 }
 

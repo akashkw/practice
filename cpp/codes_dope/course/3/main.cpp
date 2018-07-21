@@ -5,13 +5,13 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-// 003
+// 3
 // char shifter
 // Test of implicit cast of char to int and explicit cast back to char
 // Reads in number and character, prints out character shifted by number
 
 int main() {
-    cout << endl << "003 - char shifter" << endl << endl;
+    cout << endl << "3 - char shifter" << endl << endl;
     int n;
     char c;
     cout << "Please enter a character :: ";
@@ -20,6 +20,6 @@ int main() {
     cin >> n;
     cout << endl << "Your character is :: "
          << static_cast<char>(n + c) << endl << endl;
-    return 0;
+    return ;
 }
 

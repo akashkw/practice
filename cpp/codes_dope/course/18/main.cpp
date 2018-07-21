@@ -7,13 +7,13 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-// 018
+// 18
 // c strings
 // Test out standard c string functions
 // Print results of various c string functions and manipulations
 
 int main() {
-    cout << endl << "018 - c strings" << endl << endl;
+    cout << endl << "18 - c strings" << endl << endl;
 
     char str[] = {'H', 'e', 'l', 'l', 'o', '\0'};
     cout << "str[] = {'H', 'e', 'l', 'l', 'o', '\\0'}" << endl;
@@ -34,6 +34,6 @@ int main() {
     cout << "strstr(\"" << name << "\", \"cat\") = "
          << reinterpret_cast<int*>(strstr(name, "cat")) << endl;
     cout << endl;
-    return 0;
+    return ;
 }
 

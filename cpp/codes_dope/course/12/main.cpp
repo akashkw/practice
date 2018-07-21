@@ -6,7 +6,7 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-// 012
+// 12
 // inline sum
 // Test out inline functions, as well as chrono
 // Takes a number, calculates sum in different ways, reports times
@@ -20,7 +20,7 @@ inline int inline_sum(int x, int y) {
 }
 
 int main() {
-    cout << endl << "012 - inline sum" << endl << endl;
+    cout << endl << "12 - inline sum" << endl << endl;
 
     // TODO(akashkw): implement timer using chrono
 
@@ -34,6 +34,6 @@ int main() {
     cout << endl << "Inline Function :: sum is " << inline_sum(x, y) << endl;
     cout << endl << "Function ::  sum is " << sum(x, y) << endl;
     cout << endl;
-    return 0;
+    return ;
 }
 
