@@ -37,6 +37,6 @@ int main() {
     cout << "**&p = " << **&p << endl;
 
     cout << endl;
-    return ;
+    return 0;
 }
 

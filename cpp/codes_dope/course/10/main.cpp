@@ -24,6 +24,6 @@ int main() {
     }
     cout << endl << "thank you" << endl;
     cout << endl;
-    return ;
+    return 0;
 }
 

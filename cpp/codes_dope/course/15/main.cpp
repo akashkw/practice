@@ -15,7 +15,7 @@ using std::array;
 
 void printArray(const array<int, 5> &n) {
     cout << "Printed values of array" << endl << endl;
-    for (int j = ; j < n.size(); j++) {
+    for (int j = 0; j < n.size(); j++) {
         cout << "n[" << j << "] = " << n[j] << endl;
     }
     cout << endl;
@@ -30,7 +30,7 @@ int main() {
     cout << "n.fill(2)" << endl << endl;
     printArray(n);
 
-    for (int i = ; i < n.size(); i++) {
+    for (int i = 0; i < n.size(); i++) {
         cout << "Please enter n[" << i << "] :: ";
         cin >> n[i];
     }
@@ -44,6 +44,6 @@ int main() {
     cout << "n.max_size() = " << n.max_size() << endl;
 
     cout << endl;
-    return ;
+    return 0;
 }
 

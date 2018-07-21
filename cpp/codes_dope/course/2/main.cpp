@@ -17,6 +17,6 @@ int main() {
     cout << "Please enter a number :: ";
     cin >> num;
     cout << endl << "Your number is :: " << num << endl << endl;
-    return ;
+    return 0;
 }
 

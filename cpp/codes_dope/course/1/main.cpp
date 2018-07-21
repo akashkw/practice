@@ -13,6 +13,6 @@ using std::endl;
 int main() {
     cout << endl << "1 - hello world" << endl;
     cout << endl << "Hello World" << endl << endl;
-    return ;
+    return 0;
 }
 

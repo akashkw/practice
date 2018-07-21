@@ -45,6 +45,6 @@ int main() {
     cout << "name.find('i') = " << name.find('i') << endl;
     cout << "name.substr(2, 5) = " << name.substr(2, 4) << endl;
     cout << endl;
-    return ;
+    return 0;
 }
 

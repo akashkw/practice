@@ -15,7 +15,7 @@ using std::vector;
 
 void printVector(const vector<int> v) {
     cout << "Printing vector of size " << v.size() << endl;
-    for (int i = ; i < v.size(); i++) {
+    for (int i = 0; i < v.size(); i++) {
         cout << "v[" << i << "] = " << v[i] << endl;
     }
 }
@@ -53,6 +53,6 @@ int main() {
     cout << "v.empty() = " << v.empty() << endl;
     cout << endl;
 
-    return ;
+    return 0;
 }
 

@@ -20,6 +20,6 @@ int main() {
     cin >> n;
     cout << endl << "Your character is :: "
          << static_cast<char>(n + c) << endl << endl;
-    return ;
+    return 0;
 }
 

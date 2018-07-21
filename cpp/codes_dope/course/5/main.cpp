@@ -24,6 +24,6 @@ int main() {
     cout << "pow(2, 3) = " << pow(2, 3)
          << " and pow(3, 3) = " << pow(3, 3) << endl << endl;
 
-    return ;
+    return 0;
 }
 

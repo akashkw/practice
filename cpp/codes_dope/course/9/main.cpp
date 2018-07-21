@@ -20,19 +20,19 @@ int main() {
     cout << endl << endl;
 
     cout << "For Loop Test" << endl << endl;
-    for (int i = ; i <= n; i++) {
+    for (int i = 0; i <= n; i++) {
         cout << i << endl;
     }
     cout << endl;
 
     cout << "While Loop Test" << endl << endl;
-    int w = ;
+    int w = 0;
     while (w <= n) {
         cout << w << endl;
         w++;
     }
 
     cout << endl;
-    return ;
+    return 0;
 }
 

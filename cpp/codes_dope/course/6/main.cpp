@@ -18,12 +18,12 @@ int main() {
     cout << "Please enter a number :: ";
     cin >> n;
     cout << endl;
-    if ( n%2 ==  ) {
+    if ( n%2 == 0 ) {
         cout << n << " is even";
     } else {
         cout << n << " is odd";
     }
     cout << endl << endl;
-    return ;
+    return 0;
 }
 

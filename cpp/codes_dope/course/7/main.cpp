@@ -35,6 +35,6 @@ int main() {
             cout << "That's not a valid grade letter";
     }
     cout << endl << endl;
-    return ;
+    return 0;
 }
 

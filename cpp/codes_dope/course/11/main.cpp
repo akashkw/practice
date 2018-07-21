@@ -12,7 +12,7 @@ using std::endl;
 // Takes in a number, calculates the factorial of that number using recursion
 
 int factorial(int x) {
-    if (x ==  || x == 1) {
+    if (x == 0 || x == 1) {
         return 1;
     }
     return x * factorial(x-1);
@@ -27,6 +27,6 @@ int main() {
 
     cout << endl << "Factorial of " << x << " is " << factorial(x) << endl;
     cout << endl;
-    return ;
+    return 0;
 }
 

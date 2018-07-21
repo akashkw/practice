@@ -34,6 +34,6 @@ int main() {
     cout << "strstr(\"" << name << "\", \"cat\") = "
          << reinterpret_cast<int*>(strstr(name, "cat")) << endl;
     cout << endl;
-    return ;
+    return 0;
 }
 

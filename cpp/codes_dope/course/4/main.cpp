@@ -18,6 +18,6 @@ int main() {
     cout << "Size of float is " << sizeof(float) << " bytes" << endl;
     cout << "Size of double is " << sizeof(double) << " bytes" << endl << endl;
 
-    return ;
+    return 0;
 }
 

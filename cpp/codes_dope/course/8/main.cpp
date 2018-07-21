@@ -18,8 +18,8 @@ int main() {
     cout << "Please enter a number :: ";
     cin >> n;
     cout << endl;
-    (n%2 == ) ? cout << n << " is even" : cout << n << " is odd";
+    (n%2 == 0) ? cout << n << " is even" : cout << n << " is odd";
     cout << endl << endl;
-    return ;
+    return 0;
 }
 

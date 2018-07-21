@@ -34,6 +34,6 @@ int main() {
     cout << endl << "Inline Function :: sum is " << inline_sum(x, y) << endl;
     cout << endl << "Function ::  sum is " << sum(x, y) << endl;
     cout << endl;
-    return ;
+    return 0;
 }
 
