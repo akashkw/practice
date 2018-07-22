@@ -44,7 +44,7 @@ class Casper : public Doggo, public Fast {
 };
 
 int main() {
-    cout << endl << "23 - casper the multifaceted doggo" << endl << endl;
+    cout << endl << "24 - casper the multifaceted doggo" << endl << endl;
     Casper casper;
     cout << endl;
 
