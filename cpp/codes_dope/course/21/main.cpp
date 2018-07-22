@@ -29,7 +29,7 @@ void print_boi(const struct boi &this_boi) {
 }
 
 int main() {
-    cout << endl << "21 - basic define" << endl << endl;
+    cout << endl << "21 - struct bois" << endl << endl;
 
     struct boi bois[3];
     bois[0] = {20, "Akash Kwatra", "512-423-9293"};
