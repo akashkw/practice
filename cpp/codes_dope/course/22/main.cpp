@@ -3,17 +3,19 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 using std::cout;
 using std::cin;
 using std::endl;
 using std::string;
 using std::vector;
+using std::transform;
 
 // 22
 // flying first class
-// Test out some simple define statements
-// Print out PI, read in two numbers and print average
+// Test out classes, as well as vectors and structs
+// Creates a plane, adds, removes, and prints passengers
 
 struct passenger {
     string name;
@@ -41,6 +43,7 @@ class Airplane {
         if (passengers.size() >= num_seats) {
             cout << "-- This plane is at capacity" << endl;
         } else {
+            transform(job.begin(), job.end(), job.begin(), tolower);
             passengers.push_back(passenger {name, age, job});
             cout << "-- Success" << endl;
         }
