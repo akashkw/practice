@@ -1,7 +1,6 @@
 // Copyright 2018 Akash Kwatra
 
 #include <iostream>
-#include <string>
 
 using std::cout;
 using std::cin;
