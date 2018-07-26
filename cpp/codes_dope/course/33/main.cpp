@@ -1,12 +1,10 @@
 // Copyright 2018 Akash Kwatra
 
 #include <iostream>
-#include <string>
 
 using std::cout;
 using std::cin;
 using std::endl;
-using std::string;
 
 // 33
 // goldfish union
