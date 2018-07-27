@@ -5,13 +5,11 @@
 # Usage Example
 # >>> sh run 15
 
-../../cpplint.py $1/main.cpp
+pylint $1/main.py
 
-g++ -std=c++14 -o tmp.out $1/main.cpp
 if [ -e $1/stdin ]; then
-    cat $1/stdin | ./tmp.out
+    cat $1/stdin | python3 $1/main.py
 else
-    ./tmp.out
+    python3 $1/main.py
 fi
-rm tmp.out
 
