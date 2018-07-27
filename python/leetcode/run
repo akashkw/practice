@@ -5,8 +5,6 @@
 # Usage Example
 # >>> sh run 15
 
-pylint $1/main.py
-
 if [ -e $1/stdin ]; then
     cat $1/stdin | python3 $1/main.py
 else
