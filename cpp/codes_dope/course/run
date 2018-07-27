@@ -8,6 +8,10 @@
 ./cpplint.py $1/main.cpp
 
 g++ -std=c++14 -o tmp.out $1/main.cpp
-./tmp.out
+if [ -e $1/stdin ]; then
+    cat $1/stdin | ./tmp.out
+else
+    ./tmp.out
+fi
 rm tmp.out
 
