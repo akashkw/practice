@@ -43,11 +43,11 @@ bool isunique_sort(const string &str) {
 }
 
 int main() {
-   string in;
-   while(getline(cin, in)) {
-        cout << in << " is unique? :: " << boolalpha << isunique_hash(in) << endl;
-        cout << in << " is unique? :: " << boolalpha << isunique_bits(in) << endl;
-        cout << in << " is unique? :: " << boolalpha << isunique_sort(in) << endl;
+   string line;
+   while(getline(cin, line)) {
+        cout << line << " is unique? :: " << boolalpha << isunique_hash(line) << endl;
+        cout << line << " is unique? :: " << boolalpha << isunique_bits(line) << endl;
+        cout << line << " is unique? :: " << boolalpha << isunique_sort(line) << endl;
         cout << endl;
    }
 }
