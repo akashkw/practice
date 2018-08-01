@@ -44,12 +44,10 @@ bool isunique_sort(const string &str) {
 
 int main() {
    string in;
-   getline(cin, in);
-   while(!in.empty()) {
+   while(getline(cin, in)) {
         cout << in << " is unique? :: " << boolalpha << isunique_hash(in) << endl;
         cout << in << " is unique? :: " << boolalpha << isunique_bits(in) << endl;
         cout << in << " is unique? :: " << boolalpha << isunique_sort(in) << endl;
         cout << endl;
-        getline(cin, in);
    }
 }
