@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-template <class T>
+template <typename T>
 class ScopedPtr {
     T* object_;
 public:
