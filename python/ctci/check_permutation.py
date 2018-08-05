@@ -1,10 +1,10 @@
 import sys
-from collections import Counter
+import collections
 
 def check_permutation_hash(s1, s2):
     if len(s1) is not len(s2):
         return False
-    hashmap = Counter(s1)
+    hashmap = collections.Counter(s1)
     for c in s2:
         if hashmap[c] < 1:
             return False
