@@ -1,21 +1,21 @@
 import sys
 
-def urlify(string, true_size):
-    string = list(string)
-    true_size -= 1
-    end_index = true_size
-    for i in range(true_size):
-        end_index += 2 if string[i] == ' ' else 0
-    for i in range(true_size):
-        if string[true_size - i] == ' ':
-            string[end_index] = '0'
-            string[end_index - 1] = '2'
-            string[end_index - 2] = '%'
-            end_index -= 3
-        else:
-            string[end_index] = string[true_size - i]
-            end_index -= 1
-    return ''.join(string)
+def urlify(s, true_size):
+    s = list(s)
+    trueindex = true_size-1
+    newindex = trueindex + (2*s[:true_size].count(' '))
+    while newindex >= 0:
+        while trueindex >= 0:
+            if s[trueindex] == ' ':
+                s[newindex] = '0'
+                s[newindex - 1] = '2'
+                s[newindex - 2] = '%'
+                newindex -= 3
+            else:   
+                s[newindex] = s[trueindex]
+                newindex -= 1
+            trueindex -= 1
+    return "".join(s)
 
 if __name__ == '__main__':
 
