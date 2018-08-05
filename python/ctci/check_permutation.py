@@ -4,11 +4,11 @@ from collections import Counter
 def check_permutation_hash(s1, s2):
     if len(s1) is not len(s2):
         return False
-    hashmap = Counter(list(s1))
+    hashmap = Counter(s1)
     for c in s2:
-        hashmap[c] -= 1
-        if hashmap[c] < 0:
+        if hashmap[c] < 1:
             return False
+        hashmap[c] -= 1
     return True
 
 def check_permutation_sort(s1, s2):
