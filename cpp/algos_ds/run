@@ -1,4 +1,4 @@
 
-g++ $1
-./a.out
+g++ -std=c++14 $1/$1.cpp
+cat $1/stdin | ./a.out
 rm a.out
