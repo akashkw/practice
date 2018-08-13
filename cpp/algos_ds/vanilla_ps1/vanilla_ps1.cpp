@@ -48,7 +48,7 @@ public:
                 }
             }
         }
-        delete visited;
+        delete[] visited;
         return components;
     }
 
@@ -76,7 +76,7 @@ public:
             path_length++;
         }
 
-        delete visited;
+        delete[] visited;
         return node_count;
     }
 };
