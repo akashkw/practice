@@ -65,7 +65,7 @@ public:
     operator string() {
         stringstream ss;
         for(int i = 0; i < num_nodes; i++) {
-            ss << i << " -";
+            ss << i << "-";
             for(Edge &j : adjacency_list[i]) {
                 ss << "->" << j.next;
             }
@@ -92,15 +92,14 @@ int main() {
             scanf("%d-%d", &prev, &next);
             graph.add_edge(prev, next);
         }
-        cout << graph << endl;
-        cout << graph.bfs_traversal(0) << endl;
-        cout << graph.bfs_traversal(6) << endl;
-        cout << graph.bfs_traversal(3) << endl;
-        cout << graph.bfs_traversal(7) << endl;
-        cout << graph.dfs_traversal(0) << endl;
-        cout << graph.dfs_traversal(6) << endl;
-        cout << graph.dfs_traversal(3) << endl;
-        cout << graph.dfs_traversal(7) << endl;
+        vector<int> tests = {0, 6, 3, 7};
+        cout << "-- Graph --\n" << graph << endl;
+        for(int i : tests) {
+            cout << "-- BFS Traversal --\n" << graph.bfs_traversal(i) << endl;
+        }
+        for(int i : tests) {
+            cout << "-- DFS Traversal --\n" << graph.dfs_traversal(i) << endl;
+        }
     }
 }
 
