@@ -1,8 +1,8 @@
 def quicksort(lst):
     if len(lst) <= 1:
         return lst
-    smaller = [x for x in lst[1:] if x <= lst[0]]
-    larger = [x for x in lst[1:] if x > lst[0]]
+    smaller = [v for v in lst[1:] if v <= lst[0]]
+    larger = [v for v in lst[1:] if v > lst[0]]
     return quicksort(smaller) + [lst[0]] + quicksort(larger)
 
 if __name__ == '__main__':
