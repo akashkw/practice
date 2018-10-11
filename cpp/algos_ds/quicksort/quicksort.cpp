@@ -32,24 +32,29 @@ void quicksort(vector<int> &list) {
 }
 
 int main() {
-    string test;
-    while(getline(cin, test)) {
-        stringstream input = stringstream(test);
-        int i;
-        vector<int> list;
-        while(input >> i) {
-            list.push_back(i);
+    int num_tests;
+    cin >> num_tests;
+    for(int i = 1; i <= num_tests; i++) {
+        string line;
+        cin.ignore();
+        getline(cin, line);
+        istringstream istream(line);
+        int n;
+        vector<int> l;
+        while(istream >> n) {
+           l.push_back(n); 
         }
-        cout << "List before sort" << endl;
-        for(const int &v : list) {
-            cout << v << " ";
+        ostringstream output;
+        output << "Test " << i << ":" << ":\n";
+        for(const int &v : l) {
+            output << v << " "; 
         }
-        cout << endl << endl;
-        quicksort(list);
-        cout << "List after sort" << endl;
-        for(const int &v : list) {
-            cout << v << " ";
+        output << "\n";
+        quicksort(l);
+        for(const int &v : l) {
+            output << v << " "; 
         }
-        cout << endl << endl;
+        output << "\n";
+        cout << output.str();
     }
 }
