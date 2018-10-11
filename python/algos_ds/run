@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cat $1/stdin | python3 $1/$1.py
