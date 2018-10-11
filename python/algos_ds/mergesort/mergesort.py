@@ -25,13 +25,8 @@ def mergesort(lst):
     return lst_sorted
 
 if __name__ == '__main__':
-    l = [1,5,7,3,5,9,3]
-    print(l)
-    print(mergesort(l))
-    l = list(range(15))
-    l.reverse()
-    print(l)
-    print(mergesort(l))
-    l = [4,67,13,6,2,565,2,3,-4]
-    print(l)
-    print(mergesort(l))
+    num_tests = int(input())
+    for x in range(num_tests):
+        l = list(map(int, input().split()))
+        print(f"Test {x+1}:\n{l}\n{mergesort(l)}")
+

@@ -6,13 +6,7 @@ def quicksort(lst):
     return quicksort(smaller) + [lst[0]] + quicksort(larger)
 
 if __name__ == '__main__':
-    l = [1,5,7,3,5,9,3]
-    print(l)
-    print(quicksort(l))
-    l = list(range(15))
-    l.reverse()
-    print(l)
-    print(quicksort(l))
-    l = [4,67,13,6,2,565,2,3,-4]
-    print(l)
-    print(quicksort(l))
+    num_tests = int(input())
+    for x in range(num_tests):
+        l = list(map(int, input().split()))
+        print(f"Test {x+1}:\n{l}\n{quicksort(l)}")
