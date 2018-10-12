@@ -6,10 +6,10 @@ using namespace std;
 int fact_trail_zero(int n) {
     int count = 0;
     int exp = 20;
-    while(exp--) {
+    while(--exp > 0) {
         if(n >= pow(5, exp)) {
             int x = n;
-            if(x > 0) {
+            while(x > 0) {
                 count++;
                 x -= pow(5, exp);
             }
