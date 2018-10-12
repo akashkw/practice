@@ -1,13 +1,9 @@
 def fact_trail_zero(n):
+    factor = 5
     count = 0
-    exp = 20
-    while exp > 0:
-        if n >= 5**exp:
-            x = n
-            while x > 0:
-                count += 1
-                x -= 5**exp
-        exp -= 1
+    while(n/factor >= 1):
+        count += int(n/factor)
+        factor *= 5
     return count
 
 if __name__ == '__main__':
