@@ -1,18 +1,20 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+using namespace std;
 
 int main() {
-    int n;
-    std::cin >> n;
-    std::vector<int> cols;
-    for(int i = 0; i < n; i++){
-      int tmp;
-      std::cin >> tmp;
-      cols.push_back(tmp);
+    int len;
+    cin >> len;
+    vector<int> v;
+    while(len--) {
+        int i;
+        cin >> i;
+        v.push_back(i);
     }
-    std::sort(cols.begin(), cols.end());
-    for(const int &x : cols){
-      std::cout << x << " ";
+    sort(begin(v), end(v));
+    for (const int &i : v) {
+        printf("%d ", i);
     }
+    cout << endl;
 }
