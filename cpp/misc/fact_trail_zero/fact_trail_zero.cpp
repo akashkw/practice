@@ -4,16 +4,11 @@
 using namespace std;
 
 int fact_trail_zero(int n) {
+    int factor = 5;
     int count = 0;
-    int exp = 20;
-    while(--exp > 0) {
-        if(n >= pow(5, exp)) {
-            int x = n;
-            while(x > 0) {
-                count++;
-                x -= pow(5, exp);
-            }
-        }
+    while(n/factor >= 1) {
+        count += n / factor;
+        factor *= 5;
     }
     return count;
 }
