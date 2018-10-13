@@ -19,12 +19,14 @@ long long bfs(long long start, long long finish) {
         if(item.second == finish) {
             return item.first;
         }
-        if(visited.find(item.second - 1) == end(visited)){
+        if(item.second - 1 > -1 && visited.find(item.second - 1) == end(visited)){
             queue.push(pair<int, int>(item.first + 1, item.second - 1));
         }
-        if(visited.find(item.second * 2) == end(visited)){
+        if(item.second * 2 < finish + 2 && visited.find(item.second * 2) == end(visited)){
             queue.push(pair<int, int>(item.first + 1, item.second * 2));
         }
+
+
     }
 
 }
