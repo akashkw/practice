@@ -12,8 +12,10 @@ def bfs(start, finish):
         visited.add(val)
         if val == finish:
             return level
-        queue.appendleft((level + 1, val - 1))
-        queue.appendleft((level + 1, val * 2))
+        if val - 1 not in visited:
+            queue.appendleft((level + 1, val - 1))
+        if val * 2 not in visited:
+            queue.appendleft((level + 1, val * 2))
 
 if __name__ == '__main__':
     count = 0
