@@ -56,9 +56,9 @@ int main() {
             if(c == '.') {
                 c = 'X';
                 num_spots++;
+                start = make_pair(i, j);
             }
             maze[i][j] = c;
-            start = make_pair(i, j);
         }
     }
 
