@@ -36,7 +36,7 @@ int main() {
 
     while(!stack.empty()) {
         int i, j; tie(i, j) = stack.top(); stack.pop();
-        if(i < 0 || j < 0 || i >= height || j >= height || visited[i][j] || num_seen == total_spots - walls) {
+        if(i < 0 || j < 0 || i >= height || j >= width || visited[i][j] || num_seen == total_spots - walls) {
             continue;
         }
         if(maze[i][j] == 'X') {
