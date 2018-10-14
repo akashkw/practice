@@ -10,8 +10,8 @@ int main() {
 
     int num_seen(0), total_spots(0);
 
-    vector<vector<char>> maze = vector<vector<char>>(height, vector<char>(width, '\0'));
-    vector<vector<bool>> visited = vector<vector<bool>>(height, vector<bool>(width, false));
+    vector<vector<char>> maze(height, vector<char>(width, '\0'));
+    vector<vector<bool>> visited(height, vector<bool>(width, false));
     
     pair<int, int> start;
 

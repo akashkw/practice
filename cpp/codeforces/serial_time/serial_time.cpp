@@ -8,8 +8,8 @@ int main() {
     int h, l, w;
     cin >> h >> l >> w;
     
-    vector<vector<vector<char>>> plate = vector<vector<vector<char>>>(h, vector<vector<char>>(l, vector<char>(w, '\0')));
-    vector<vector<vector<bool>>> visited = vector<vector<vector<bool>>>(h, vector<vector<bool>>(l, vector<bool>(w, false)));
+    vector<vector<vector<char>>> plate(h, vector<vector<char>>(l, vector<char>(w, '\0')));
+    vector<vector<vector<bool>>> visited(h, vector<vector<bool>>(l, vector<bool>(w, false)));
     vector<int> di = {1, -1, 0, 0, 0, 0};
     vector<int> dj = {0, 0, -1, 1, 0, 0};
     vector<int> dk = {0, 0, 0, 0, 1, -1};
