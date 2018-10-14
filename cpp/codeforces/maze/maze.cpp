@@ -1,52 +1,18 @@
 #include <iostream>
-#include <string>
-#include <sstream>
 #include <vector>
 #include <stack>
 #include <tuple>
 using namespace std;
 
-class Maze {
-    vector<vector<char>> maze_;
-    vector<vector<bool>> visited_;
-public:
-    Maze(int height, int width) {
-        maze_ = vector<vector<char>>(height, vector<char>(width, '\0'));
-        visited_ = vector<vector<bool>>(height, vector<bool>(width, false));
-    }
-    vector<char>& operator[](int i) {
-        return maze_[i];
-    }
-    bool visited(int i, int j) const {
-        return visited_[i][j];
-    }
-    void visit(int i, int j) {
-        visited_[i][j] = true;
-    }
-    operator string() const {
-        stringstream ss;
-        for(const vector<char> &v : maze_) {
-            for(const char &c : v) {
-                ss << c;
-            }
-            ss << '\n';
-        }
-        return ss.str();
-    }
-};
-
-ostream& operator<<(ostream &_stream, const Maze &_maze) {
-    _stream << string(_maze);
-    return _stream;
-}
-
 int main() {
+    int height, width, walls;
+    scanf("%d %d %d", &height, &width, &walls);
 
-    int height, width, num_walls;
-    int num_visited(0), num_spots(0);
-    scanf("%d %d %d", &height, &width, &num_walls);
+    int num_seen(0), total_spots(0);
 
-    Maze maze(height, width);
+    vector<vector<char>> maze = vector<vector<char>>(height, vector<char>(width, '\0'));
+    vector<vector<bool>> visited = vector<vector<bool>>(height, vector<bool>(width, false));
+    
     pair<int, int> start;
 
     for(int i = 0; i < height; i++) {
@@ -55,7 +21,7 @@ int main() {
             cin >> c;
             if(c == '.') {
                 c = 'X';
-                num_spots++;
+                total_spots++;
                 start = make_pair(i, j);
             }
             maze[i][j] = c;
@@ -65,23 +31,29 @@ int main() {
     stack<pair<int, int>> stack;
     stack.push(start);
     
+    vector<int> di = {-1, 0, 1, 0};
+    vector<int> dj = {0, -1, 0, 1};
+
     while(!stack.empty()) {
         int i, j; tie(i, j) = stack.top(); stack.pop();
-        if(i < 0 || i >= height || j < 0 || j >= width || 
-           maze.visited(i, j) || num_visited == num_spots - num_walls) {
+        if(i < 0 || j < 0 || i >= height || j >= height || visited[i][j] || num_seen == total_spots - walls) {
             continue;
         }
         if(maze[i][j] == 'X') {
+            visited[i][j] = true;
+            num_seen++;
             maze[i][j] = '.';
-            maze.visit(i, j);
-            num_visited++;
-            stack.push(make_pair(i+1, j));
-            stack.push(make_pair(i-1, j));
-            stack.push(make_pair(i, j+1));
-            stack.push(make_pair(i, j-1));
+            for(int x = 0; x < 4; x++) {
+                stack.push(make_pair(i + di[x], j + dj[x]));
+            }
         }
     }
 
-    cout << maze;   
+    for(const vector<char> &row : maze) {
+        for(const char &c : row) {
+            cout << c;
+        }
+        cout << endl;
+    }
 }
 
