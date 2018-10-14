@@ -67,8 +67,18 @@ int main() {
     
     while(!stack.empty()) {
         int i, j; tie(i, j) = stack.top(); stack.pop();
-        if(num_visited == num_spots - num_walls || maze.visited(i, j)) {
+        if(i < 0 || i >= height || j < 0 || j >= width || 
+           maze.visited(i, j) || num_visited == num_spots - num_walls) {
             continue;
+        }
+        if(maze[i][j] == 'X') {
+            maze[i][j] = '.';
+            maze.visit(i, j);
+            num_visited++;
+            stack.push(make_pair(i+1, j));
+            stack.push(make_pair(i-1, j));
+            stack.push(make_pair(i, j+1));
+            stack.push(make_pair(i, j-1));
         }
     }
 
