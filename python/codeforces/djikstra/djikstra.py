@@ -1,5 +1,4 @@
-from queue import PriorityQueue
-
+from heapq import heappop, heappush
 def int_line():
     return (map(int, input().split()))
 
@@ -16,12 +15,11 @@ for x in range(edges):
 visited = [False for x in range(nodes)]
 previous = [-1 for x in range(nodes)]
 
-pq = PriorityQueue()
-pq.put((0, 0, -1))
-
+pq = list()
+heappush(pq, (0, 0, -1))
 path_found = False
-while not pq.empty():
-    path_cost, node, prev = pq.get()
+while pq:
+    path_cost, node, prev = heappop(pq)
     if visited[node]: continue
     visited[node] = True
     previous[node] = prev
@@ -30,7 +28,7 @@ while not pq.empty():
         break
     for nxt, cost in graph[node]:
         if not visited[nxt]:
-            pq.put((path_cost + cost, nxt, node))
+            heappush(pq, (path_cost + cost, nxt, node))
 if not path_found:
     print(-1)
     exit(0)
