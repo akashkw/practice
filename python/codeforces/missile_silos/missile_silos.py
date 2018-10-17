@@ -36,10 +36,10 @@ for p in shortest_path:
 for left, right, cost in edge_list:
     if shortest_path[left] < l and shortest_path[left] + cost > l:
         silo_dist = l - shortest_path[left]
-        silos += 1 if shortest_path[right] + (cost - silo_dist) >= shortest_path[left] + silo_dist else 0
+        silos += 1 if shortest_path[right] + (cost - silo_dist) >= l else 0
     if shortest_path[right] < l and shortest_path[right] + cost > l:
         silo_dist = l - shortest_path[right]
-        silos += 1 if shortest_path[left] + (cost - silo_dist) > shortest_path[right] + silo_dist else 0
+        silos += 1 if shortest_path[left] + (cost - silo_dist) > l else 0
 print(silos)
 
 
