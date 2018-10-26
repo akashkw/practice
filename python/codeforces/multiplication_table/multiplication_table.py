@@ -1,4 +1,3 @@
-from time import time
 n, m, k = (map(int, input().split()))
 
 def num_leq(n, m, x):
@@ -15,3 +14,4 @@ while lo + 1 < hi:
     if num_leq(n, m, mid) >= k: hi = mid
     else: lo = mid
 print(hi)
+
