@@ -1,7 +1,8 @@
-from bisect import bisect
 num_shops = int(input())
 shop_costs = sorted(map(int, input().split()))
 num_days = int(input())
+
+sol = list()
 
 for d in range(num_days):
     today_money = int(input())
@@ -11,4 +12,6 @@ for d in range(num_days):
         mid = int((lo + hi) / 2)
         if shop_costs[mid] <= today_money: lo = mid
         else: hi = mid
-    print(lo + 1)
+    sol += f"{lo + 1}"
+    sol += "\n"
+print("".join(sol[:-1]))
