@@ -35,6 +35,10 @@ def edmonds_karp(source, sink, graph):
     return max_flow
 
 if __name__ == '__main__':
+    # stdin
+    # first line = number of tests
+    # for each test, first line = num nodes, num edges, source, sink
+    # num edges lines follow, each one has tail, head, capacity
     tests = int(input())
     for t in range(tests):
         nodes, edges, source, sink = (map(int, input().split()))
