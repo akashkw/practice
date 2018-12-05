@@ -12,7 +12,6 @@ def merge_sorted_lists(lists):
             heappush(min_heap, (lists[lis][ind+1], lis, ind+1))
     return sorted_list
 
-
 if __name__ == '__main__':
     lists = [[10, 15, 30], [12, 15, 20], [17, 20, 32]]
 
