@@ -11,11 +11,9 @@
 using namespace std;
 
 vector<int> product_array(const vector<int> &input) {
-    vector<int> left(input.size());
-    vector<int> right(input.size());
-    vector<int> product(input.size());
-    left[0] = 1;
-    right[input.size()-1] = 1;
+    vector<int> left(input.size(), 1);
+    vector<int> right(input.size(), 1);
+    vector<int> product(input.size(), 1);
     for(int i = 1; i < input.size(); i++) {
         left[i] = left[i-1] * input[i-1];
         right[input.size()-i-1] = right[input.size()-i] * input[input.size()-i];
