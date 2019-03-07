@@ -12,7 +12,7 @@ using namespace std;
  */
 
 // Solution Function
-bool soltion(int num) {
+bool solution(int num) {
     return num;
 }
 
