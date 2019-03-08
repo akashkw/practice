@@ -35,6 +35,19 @@ bool two_sum(const vector<int> &vec, const int &k) {
     return false;
 }
 
+bool bonus_two_sum(const vector<int> &vec, const int &k) {
+    if(vec.size() < 2) {
+        return false;
+    }
+    unordered_set<int> visited;
+    for(const int &i : vec) {
+        if(visited.find(k - i) != visited.end())
+            return true;
+        visited.insert(i);
+    }
+    return false;
+}
+
 TEST(SolutionFixture, test_1) {
     vector<int> vec = {10,15,3,7};
     int k = 17;
@@ -53,11 +66,36 @@ TEST(SolutionFixture, test_3) {
 TEST(SolutionFixture, test_4) {
     vector<int> vec = {10,15,3,7};
     int k = 10;
-    ASSERT_TRUE(two_sum(vec, k));
+    ASSERT_TRUE(bonus_two_sum(vec, k));
 }
 TEST(SolutionFixture, test_5) {
     vector<int> vec = {20,15,3,7};
     int k = 11;
-    ASSERT_FALSE(two_sum(vec, k));
+    ASSERT_FALSE(bonus_two_sum(vec, k));
 }
 
+TEST(BonusSolutionFixture, test_1) {
+    vector<int> vec = {10,15,3,7};
+    int k = 17;
+    ASSERT_TRUE(bonus_two_sum(vec, k));
+}
+TEST(BonusSolutionFixture, test_2) {
+    vector<int> vec = {10,15,15,7};
+    int k = 30;
+    ASSERT_TRUE(bonus_two_sum(vec, k));
+}
+TEST(BonusSolutionFixture, test_3) {
+    vector<int> vec = {10};
+    int k = 6;
+    ASSERT_FALSE(bonus_two_sum(vec, k));
+}
+TEST(BonusSolutionFixture, test_4) {
+    vector<int> vec = {10,15,3,7};
+    int k = 10;
+    ASSERT_TRUE(bonus_two_sum(vec, k));
+}
+TEST(BonusSolutionFixture, test_5) {
+    vector<int> vec = {20,15,3,7};
+    int k = 11;
+    ASSERT_FALSE(bonus_two_sum(vec, k));
+}
