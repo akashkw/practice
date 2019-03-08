@@ -24,11 +24,33 @@ using namespace std;
  */
 
 // Solution Function
-bool solution(int num) {
-    return num;
+vector<int> product_array(const vector<int> &vec) {
+    int64_t product = 1;
+    for(const int &i : vec)
+        product *= i;
+    vector<int> solution(vec.size());
+    for(size_t i = 0; i < vec.size(); ++i)
+        solution[i] = product / vec[i];
+    return solution;
 }
 
 TEST(SolutionFixture, test_1) {
-    ASSERT_TRUE(solution(1));
+    vector<int> vec = product_array({1,2,3,4,5});
+    vector<int> solution = {120,60,40,30,24};
+    ASSERT_TRUE(equal(begin(vec), end(vec), begin(solution)));
 }
-
+TEST(SolutionFixture, test_2) {
+    vector<int> vec = product_array({3,2,1});
+    vector<int> solution = {2,3,6};
+    ASSERT_TRUE(equal(begin(vec), end(vec), begin(solution)));
+}
+TEST(SolutionFixture, test_3) {
+    vector<int> vec = product_array({-3,2,1});
+    vector<int> solution = {2,-3,-6};
+    ASSERT_TRUE(equal(begin(vec), end(vec), begin(solution)));
+}
+TEST(SolutionFixture, test_4) {
+    vector<int> vec = product_array({-3,1,-8,3});
+    vector<int> solution = {-24,72,-9,24};
+    ASSERT_TRUE(equal(begin(vec), end(vec), begin(solution)));
+}
