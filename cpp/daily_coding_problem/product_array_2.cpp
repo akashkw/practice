@@ -43,25 +43,26 @@ vector<int> product_array(const vector<int> &vec) {
     return solution;
 }
 
+// vec   array [1,2,3,4,5]
+// right array [120,60,20,5,1]
+// left array  [1,1,2,6,24]
 vector<int> bonus_product_array(const vector<int> &vec) {
     if(vec.size() == 2) {
         return {vec[1], vec[0]};
     }
     vector<int> left_array(vec.size(), 1);
     vector<int> right_array(vec.size(), 1);
-    right_array[right_array.size() - 2] = vec[right_array.size()-1];
+    right_array[vec.size()-2] = vec[vec.size() - 1];
+    for (int i = (int)vec.size() - 3; i >= 0; --i) {
+        right_array[i] = right_array[i+1] * vec[i+1];
+    }
     left_array[1] = vec[0];
-    for(int i = (int)right_array.size()-3; i >= 0; --i) {
-        right_array[i] = right_array[i+1] * right_array[i+2];
+    for(size_t i = 2; i < vec.size(); ++i) {
+        left_array[i] = left_array[i-1] * vec[i-1];
     }
-    for(size_t i = 2; i <= left_array.size()-1; ++i) {
-        left_array[i] = left_array[i-1] * right_array[i-2];
-    }
-    vector<int> solution(vec.size());
-    solution[0] = right_array[1];
-    solution[solution.size()-1] = left_array[solution.size()-2];
-    for(size_t i = 1; i < vec.size() - 1; ++i) {
-        solution[i] = left_array[i-1] * right_array[i+1];
+    vector<int> solution(vec.size(), 1);
+    for(size_t i = 0; i < vec.size(); ++i) {
+        solution[i] = right_array[i] * left_array[i];
     }
     return solution;
 }
