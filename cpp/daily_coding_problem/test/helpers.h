@@ -1,3 +1,7 @@
+
+#ifndef test_helpers_h
+#define test_helpers_h
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -15,3 +19,5 @@ template <typename T> string vec_string(const vector<T> &vec) {
     out << vec[vec.size()-1] << "]";
     return out.str();
 }
+
+#endif
