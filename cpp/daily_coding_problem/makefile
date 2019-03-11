@@ -7,7 +7,7 @@ GTEST_FLAGS = -lgtest -lgtest_main -pthread
 .PHONY : clean create
 
 create %:
-	 cp template.cpp $(filter-out $@,$(MAKECMDGOALS)).cpp
+	 cp test/template.cpp $(filter-out $@,$(MAKECMDGOALS)).cpp
 
 clean:
 	rm *.out

@@ -10,15 +10,6 @@
 
 using namespace std;
 
-template <typename T> string vec_string(const vector<T> &vec) {
-    ostringstream out;
-    out << "[";
-    for(size_t i = 0; i < vec.size()-1; ++i)
-        out << vec[i] << ",";
-    out << vec[vec.size()-1] << "]";
-    return out.str();
-}
-
 /*
  * Problem Statement
  *

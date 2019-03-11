@@ -6,16 +6,9 @@
 
 #include "gtest/gtest.h"
 
-using namespace std;
+#include "test/helpers.h"
 
-template <typename T> string vec_string(const vector<T> &vec) {
-    ostringstream out;
-    out << "[";
-    for(size_t i = 0; i < vec.size()-1; ++i)
-        out << vec[i] << ",";
-    out << vec[vec.size()-1] << "]";
-    return out.str();
-}
+using namespace std;
 
 /*
  * Problem Statement
