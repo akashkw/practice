@@ -13,6 +13,6 @@ clean:
 	rm *.out
 
 %:
-	$(CC) $(STD_FLAG) $@.cpp -o $@.out $(GTEST_FLAGS)
+	$(CC) $(CFLAGS) $@.cpp -o $@.out $(GTEST_FLAGS)
 	./$@.out
 	rm $@.out
