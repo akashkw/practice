@@ -8,6 +8,7 @@
 #include <vector>
 #include <queue>
 #include <tuple>
+#include <stack>
 #include <algorithm>
 
 using namespace std;
@@ -33,20 +34,54 @@ struct node {
         delete left, left = nullptr;
         delete right, right = nullptr;
     }
-    operator string() {
+
+    int depth() const {
+        stack<pair<int, node<T>>> s;
+        int max_depth = 0;
+        s.push(make_pair(1, *this));
+        while(!s.empty()) {
+            int depth = s.top().first;
+            node<T> this_node = s.top().second;
+            s.pop();
+            if(max_depth < depth)
+                max_depth = depth;
+            if(this_node.left != nullptr) {
+                s.push(make_pair(depth+1, *(this_node.left)));
+            }
+            if(this_node.right != nullptr) {
+                s.push(make_pair(depth+1, *(this_node.right)));
+            }
+        }
+        return max_depth;
+    }
+    
+    /*
+     15*               1
+     7 *       1       15      2
+     3 *   1       2   7   3       4
+     1 * 1   2   3   4 3 5   6   7   8
+     0 *1 2 3 4 5 6 7 819 0 1 2 3 4 5 6
+    */
+
+    operator string() const {
         ostringstream output;
         queue<pair<int, node<T>>> q;
-        q.push(make_pair(0, *this));
+        q.push(make_pair(1, *this));
         int prev_level = 0; 
+        int max_depth = depth();
         while(!q.empty()) {
             int level = q.front().first;
             node<T> this_node = q.front().second;
             q.pop();
             if(level != prev_level) {
                 output << "\n";
+                for(int i = 0; i < ((2 << (max_depth-level)))-1; ++i)
+                    output << " ";
                 ++prev_level;
             }
-            output << this_node.data << " ";
+            output << this_node.data;
+            for(int i = 0; i < ((2<<((max_depth+1)-level))-1); ++i)
+                output << " ";
             if(this_node.left != nullptr) {
                 q.push(make_pair(level+1, *(this_node.left)));
             }

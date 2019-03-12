@@ -32,7 +32,7 @@ TEST(SolutionFixture, test_1) {
     root->left->left->left = new node<int>(8);
     root->left->left->right = new node<int>(9);
 
-    cout << string(*(root->left)) << endl;
+    cout << string(*(root)) << endl;
     delete root;
 
     ASSERT_TRUE(solution(1));
