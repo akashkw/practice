@@ -20,6 +20,6 @@ struct node {
     node() : left(nullptr), right(nullptr) {}
     node(T& d) : data(d), left(nullptr), right(nullptr) {}
     node(T& d, node* l, node* r): data(d), left(l), right(r) {}
-}
+};
 
 #endif
