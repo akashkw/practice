@@ -11,15 +11,15 @@
 using namespace std;
 
 template <typename T>
-struct Node {
+struct node {
 
     T data;
-    Node* left;
-    Node* right;
+    node* left;
+    node* right;
 
-    Node() = default;
-    Node(T& d) : data(d) {}
-    Node(T& d, Node* l, Node* r): data(d), left(l), right(r) {}
+    node() : left(nullptr), right(nullptr) {}
+    node(T& d) : data(d), left(nullptr), right(nullptr) {}
+    node(T& d, node* l, node* r): data(d), left(l), right(r) {}
 }
 
 #endif
