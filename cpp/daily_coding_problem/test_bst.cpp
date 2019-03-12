@@ -22,14 +22,17 @@ bool solution(int num) {
 
 TEST(SolutionFixture, test_1) {
 
-    node<string>* root = new node<string>("root", new node<string>("rootl"), new node<string>("rootr"));
-    root->left->left = new node<string>("rootll");
-    root->left->right = new node<string>("rootlr");
-    root->right->right = new node<string>("rootrr");
-    root->right->right->left = new node<string>("rootrrl");
-    cout << root->data << endl;
+    node<int>* root = new node<int>(1);
+    root->left = new node<int>(2);
+    root->right = new node<int>(3);
+    root->left->left = new node<int>(4);
+    root->left->right = new node<int>(5);
+    root->right->left = new node<int>(6);
+    root->right->right = new node<int>(7);
+    root->left->left->left = new node<int>(8);
+    root->left->left->right = new node<int>(9);
 
-    root->print();
+    cout << string(*(root->left)) << endl;
     delete root;
 
     ASSERT_TRUE(solution(1));

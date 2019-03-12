@@ -33,28 +33,30 @@ struct node {
         delete left, left = nullptr;
         delete right, right = nullptr;
     }
-    //void print() {
-        //queue<pair<int, node<T>>> q;
-        //q.push(make_pair(0, *this));
-        //int prev_level = 0; 
-        //while(!q.empty()) {
-            //int level;
-            //node<T> this_node;
-            //tie(level, this_node) = q.front();
-            //q.pop();
-            //if(level != prev_level) {
-                //cout << "\n";
-                //++prev_level;
-            //}
-            //cout << this_node.data << " ";
-            //if(this_node.left != nullptr) {
-                //q.push(make_pair(level+1, this_node.left));
-            //}
-            //if(this_node.right != nullptr) {
-                //q.push(make_pair(level+1, this_node.right));
-            //}
-        //}
-    //}
+    operator string() {
+        ostringstream output;
+        queue<pair<int, node<T>>> q;
+        q.push(make_pair(0, *this));
+        int prev_level = 0; 
+        while(!q.empty()) {
+            int level = q.front().first;
+            node<T> this_node = q.front().second;
+            q.pop();
+            if(level != prev_level) {
+                output << "\n";
+                ++prev_level;
+            }
+            output << this_node.data << " ";
+            if(this_node.left != nullptr) {
+                q.push(make_pair(level+1, *(this_node.left)));
+            }
+            if(this_node.right != nullptr) {
+                q.push(make_pair(level+1, *(this_node.right)));
+            }
+        }
+        output << "\n";
+        return output.str();
+    }
 };
 
 #endif
