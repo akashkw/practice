@@ -10,9 +10,13 @@ create %:
 	 cp test/template.cpp $(filter-out $@,$(MAKECMDGOALS)).cpp
 
 clean:
-	rm *.out
+	find . -name "*.o" -type f -delete
+	find . -name "*.out" -type f -delete
+
 
 %:
-	$(CC) $(CFLAGS) $@.cpp -o $@.out $(GTEST_FLAGS)
+	$(CC) $(CFLAGS) -c test/structures.cpp -o structures.o
+	$(CC) $(CFLAGS) -c $@.cpp -o $@.o
+	$(CC) $(CFLAGS) -o $@.out $(GTEST_FLAGS) structures.o $@.o
 	./$@.out
 	rm $@.out
