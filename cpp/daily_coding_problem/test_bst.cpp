@@ -31,6 +31,8 @@ TEST(SolutionFixture, test_1) {
     root->right->right = new node<int>(7);
     root->left->left->left = new node<int>(8);
     root->left->left->right = new node<int>(9);
+    root->right->left->left = new node<int>(1);
+    root->right->left->right = new node<int>(2);
 
     cout << string(*(root)) << endl;
     delete root;
