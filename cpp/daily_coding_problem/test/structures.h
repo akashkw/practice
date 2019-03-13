@@ -19,14 +19,16 @@ struct node {
     T data;
     node* left;
     node* right;
+    bool valid;
 
-    node() : left(nullptr), right(nullptr) {}
-    node(const T& d) : data(d), left(nullptr), right(nullptr) {}
-    node(const T& d, node* l, node* r): data(d), left(l), right(r) {}
-    node(const node<T> &other) : data(other.data), left(nullptr), right(nullptr) {
+    node() : left(nullptr), right(nullptr), valid(true) {}
+    node(const T& d) : data(d), left(nullptr), right(nullptr), valid(true) {}
+    node(const T& d, node* l, node* r): data(d), left(l), right(r), valid(true) {}
+    node(const node<T> &other) : data(other.data), left(nullptr), right(nullptr), valid(true) {
         left = other.left == nullptr ? nullptr : new node(*(other.left));
         right = other.right == nullptr ? nullptr : new node(*(other.right));
     }
+    node(const T &d, const bool &valid) : data(d), left(nullptr), right(nullptr), valid(valid) {}
     node& operator=(const node<T> &other) {
         data = other.data;
     }
@@ -65,14 +67,14 @@ struct node {
 
     operator string() const {
         ostringstream output;
-        queue<pair<int, const node<T>*>> q;
+        queue<pair<int, node<T>*>> q;
         node<T>* root_copy = new node<T>(*this);
         q.push(make_pair(1, root_copy));
         int prev_level = 0; 
         int max_depth = depth();
         while(!q.empty()) {
             int level = q.front().first;
-            const node<T>* this_node = q.front().second;
+            node<T>* this_node = q.front().second;
             q.pop();
             if(level != prev_level) {
                 output << "\n";
@@ -80,17 +82,27 @@ struct node {
                     output << " ";
                 ++prev_level;
             }
-            output << this_node->data;
+            if(this_node->valid) {
+                output << this_node->data;
+            }
+            else {
+                output << " ";
+            }
             for(int i = 0; i < ((2<<((max_depth+1)-level))-1); ++i)
                 output << " ";
-            if(this_node->left != nullptr) {
+            if(level != max_depth) {
+                if (this_node->left == nullptr) {
+                    this_node->left = new node<T> (this_node->data, false);
+                }
+                if (this_node->right == nullptr) {
+                    this_node->right = new node<T> (this_node->data, false);
+                }
                 q.push(make_pair(level+1, this_node->left));
-            }
-            if(this_node->right != nullptr) {
                 q.push(make_pair(level+1, this_node->right));
             }
         }
         output << "\n";
+        delete root_copy;
         return output.str();
     }
 };
