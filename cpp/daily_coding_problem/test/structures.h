@@ -42,4 +42,6 @@ struct node {
     operator string() const;
 };
 
+#include "structures.cpp"
+
 #endif
