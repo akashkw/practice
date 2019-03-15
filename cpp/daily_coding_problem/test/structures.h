@@ -29,9 +29,7 @@ struct node {
         right = other.right == nullptr ? nullptr : new node(*(other.right));
     }
     node(const T &d, const bool &valid) : data(d), left(nullptr), right(nullptr), valid(valid) {}
-    node& operator=(const node<T> &other) {
-        data = other.data;
-    }
+    node& operator=(const node<T> &other) = default;
     ~node() {
         delete left, left = nullptr;
         delete right, right = nullptr;
