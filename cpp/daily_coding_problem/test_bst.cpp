@@ -34,15 +34,19 @@ TEST(SolutionFixture, test_1) {
     root->right->left->left = new node<int>(1);
     root->right->left->right = new node<int>(2);
 
-    node<int>* root_2;
-    root_2 = root;
-
+    node<int>* root_2 = new node<int>(*root);
+    
     cout << root->depth() << endl;
-    cout << string(*(root)) << endl;
+    cout << (*root==*root_2) << endl;
     root->right->left->right = new node<int>(7);
-    cout << string(*(root_2)) << endl;
-    delete root;
+    cout << root << endl;
+    cout << root_2 << endl;
+
+    cout << *root << endl;
+    cout << (*root==*root_2) << endl;
 
     ASSERT_TRUE(solution(1));
+    delete root;
+    delete root_2;
 }
 

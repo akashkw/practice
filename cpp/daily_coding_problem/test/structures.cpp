@@ -13,12 +13,12 @@ using namespace std;
 
 template <typename T>
 int node<T>::depth() const {
-    stack<pair<int, const node<T>*>> s;
+    stack<pair<int, const node*>> s;
     int max_depth = 0;
     s.push(make_pair(1, this));
     while(!s.empty()) {
         int depth = s.top().first;
-        const node<T>* this_node = s.top().second;
+        const node* this_node = s.top().second;
         s.pop();
         if(max_depth < depth)
             max_depth = depth;
@@ -42,14 +42,14 @@ int node<T>::depth() const {
 template <typename T>
 node<T>::operator string() const {
     ostringstream output;
-    queue<pair<int, node<T>*>> q;
-    node<T>* root_copy = new node<T>(*this);
+    queue<pair<int, node*>> q;
+    node* root_copy = new node(*this);
     q.push(make_pair(1, root_copy));
     int prev_level = 0; 
     int max_depth = depth();
     while(!q.empty()) {
         int level = q.front().first;
-        node<T>* this_node = q.front().second;
+        node* this_node = q.front().second;
         q.pop();
         if(level != prev_level) {
             output << "\n";
@@ -67,10 +67,10 @@ node<T>::operator string() const {
             output << " ";
         if(level != max_depth) {
             if (this_node->left == nullptr) {
-                this_node->left = new node<T> (this_node->data, false);
+                this_node->left = new node(this_node->data, false);
             }
             if (this_node->right == nullptr) {
-                this_node->right = new node<T> (this_node->data, false);
+                this_node->right = new node(this_node->data, false);
             }
             q.push(make_pair(level+1, this_node->left));
             q.push(make_pair(level+1, this_node->right));
