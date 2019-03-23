@@ -9,6 +9,11 @@ GTEST_FLAGS = -lgtest -lgtest_main -pthread
 create %:
 	 cp test/template.cpp $(filter-out $@,$(MAKECMDGOALS)).cpp
 
+debug %:
+	 $(CC) $(CFLAGS) $(filter-out $@,$(MAKECMDGOALS)).cpp -g -o $(filter-out $@,$(MAKECMDGOALS)).out $(GTEST_FLAGS)
+	 gdb ./$(filter-out $@,$(MAKECMDGOALS)).out
+	 rm $(filter-out $@,$(MAKECMDGOALS)).out
+
 clean:
 	rm *.out
 
