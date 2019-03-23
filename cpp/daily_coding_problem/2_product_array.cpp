@@ -28,34 +28,42 @@ using namespace std;
 // Solution Function
 vector<int> product_array(const vector<int> &vec) {
     int64_t product = 1;
+    // find the product of whole array
     for(const int &i : vec)
         product *= i;
     vector<int> solution(vec.size());
+    // fill each value with product / val
     for(size_t i = 0; i < vec.size(); ++i)
         solution[i] = product / vec[i];
     return solution;
 }
 
-// vec   array [1,2,3,4,5]
-// right array [120,60,20,5,1]
-// left array  [1,1,2,6,24]
+// vec   array [  1,  2,  3,  4,  5]
+// right array [120, 60, 20,  5,  1]
+// left array  [  1,  1,  2,  6, 24]
 vector<int> bonus_product_array(const vector<int> &vec) {
+    // special case for if array has size 2
     if(vec.size() == 2) {
         return {vec[1], vec[0]};
     }
+    // we will create two arrays to cache the left and right
+    // multiplication values, excluding the current value
     vector<int> left_array(vec.size(), 1);
     vector<int> right_array(vec.size(), 1);
-    right_array[vec.size()-2] = vec[vec.size() - 1];
-    for (int i = (int)vec.size() - 3; i >= 0; --i) {
+
+    // fill values of right array starting from right side
+    for(int i = right_array.size()-2; i >= 0; --i) {
         right_array[i] = right_array[i+1] * vec[i+1];
     }
-    left_array[1] = vec[0];
-    for(size_t i = 2; i < vec.size(); ++i) {
+    // fill values of left array starting from left side
+    for(size_t i = 1; i < left_array.size(); ++i) {
         left_array[i] = left_array[i-1] * vec[i-1];
     }
+    
+    // solution is just the left * right at each position 
     vector<int> solution(vec.size(), 1);
-    for(size_t i = 0; i < vec.size(); ++i) {
-        solution[i] = right_array[i] * left_array[i];
+    for(size_t i = 0; i < solution.size(); ++i) {
+        solution[i] = left_array[i] * right_array[i];
     }
     return solution;
 }

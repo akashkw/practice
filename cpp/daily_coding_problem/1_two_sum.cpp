@@ -23,13 +23,16 @@ using namespace std;
 
 // Solution Function
 bool two_sum(const vector<int> &vec, const int &k) {
+    // special case for small array
     if(vec.size() < 2) {
         return false;
     }
+    // create a frequency table of values
     unordered_map<int,int> freq;
     for(const int &i : vec) {
         ++freq[i];
     }
+    // if k-i is present, or k-i is exactly half and two of them are present
     for(const int &i : vec) {
         if(freq[k-i] == 1 || (freq[k-i] >= 2 && k-i == i))
             return true;
@@ -38,13 +41,17 @@ bool two_sum(const vector<int> &vec, const int &k) {
 }
 
 bool bonus_two_sum(const vector<int> &vec, const int &k) {
+    // special case for small array
     if(vec.size() < 2) {
         return false;
     }
+    // create a visited set 
     unordered_set<int> visited;
     for(const int &i : vec) {
+        // if we visited k-i, we're done
         if(visited.find(k - i) != visited.end())
             return true;
+        // else add to visited
         visited.insert(i);
     }
     return false;
