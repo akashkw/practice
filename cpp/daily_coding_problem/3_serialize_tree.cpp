@@ -105,7 +105,7 @@ node<T>* deserialize(const string &serial) {
             tokstream >> tok_T;
             bitset<32> counter_bits(counter);        
             node<T>** current_node = &root;
-            for(int i = 0; i < depth+1; ++i) {
+            for(int i = depth; i >= 0; --i) {
                 if(counter_bits.test(i)) {
                     current_node = &((*current_node)->right);
                 }
