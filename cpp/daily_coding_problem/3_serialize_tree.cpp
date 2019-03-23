@@ -88,4 +88,14 @@ TEST(SolutionFixture, test_2) {
     root->right->right = new node<int>(9);
     ASSERT_EQ(serialize(root), "1 3 5 12 8 NULL 9 ");
 }
+TEST(SolutionFixture, test_3) {
+    node<int>* root = new node<int>(1);
+    root->left = new node<int>(3);
+    root->right = new node<int>(5);
+    root->left->left = new node<int>(12);
+    root->left->right = new node<int>(8);
+    root->right->right = new node<int>(9);
+    root->right->right->left = new node<int>(34);
+    ASSERT_EQ(serialize(root), "1 3 5 12 8 NULL 9 NULL NULL NULL NULL NULL NULL 34 ");
+}
 
