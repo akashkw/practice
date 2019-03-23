@@ -35,31 +35,60 @@ using namespace std;
 // Solution Function
 template <typename T>
 string serialize(const node<T>* root) {
-    ostringstream str, tree;
+    ostringstream serial;
     queue<pair<int, const node<T>*>> q;
-    int depth = 0;
+    
+    int null_counter = 0;
     q.push(make_pair(1, root));
 
     while(!q.empty()) {
-        int level = q.front().first;
-        const node<T>* this_node= q.front().second;
+        int depth = q.front().first; 
+        const node<T>* current_node = q.front().second; 
         q.pop();
-        if(level > depth) depth = level;
-        tree << this_node->data << ",";
-        if(this_node->left != nullptr) {
-            q.push(make_pair(level+1, this_node->left)); 
+        const node<T>* left_node = nullptr; 
+        const node<T>* right_node = nullptr; 
+        if(current_node == nullptr) {
+            ++null_counter;
+            if(null_counter == 2<<(depth-2)) {
+                break;
+                cout << "BRUNK" << endl;
+            }
         }
-        if(this_node->right != nullptr) {
-            q.push(make_pair(level+1, this_node->right)); 
+        else {
+            cout << current_node->data << endl;
+            cout << null_counter << endl;
+            while(null_counter > 0) {
+                serial << "NULL ";
+                --null_counter;
+            }
+            serial << current_node->data << " ";
+            if(current_node->left != nullptr) {
+                left_node = current_node->left;
+            }
+            if(current_node->left != nullptr) {
+                right_node = current_node->right;
+            }
+
         }
+        q.push(make_pair(depth+1, left_node));
+        q.push(make_pair(depth+1, right_node));
     }
-    str << depth << " " << tree.str();
-    return str.str();
+    return serial.str();
 }
 
 TEST(SolutionFixture, test_1) {
-    node<int>* root = new node<int>(1, new node<int>(1), new node<int>(2));
-    cout << root << endl;
-    ASSERT_EQ(serialize(root), "2 1,1,2,");
+    node<int>* root = new node<int>(1);
+    root->left = new node<int>(3);
+    root->right = new node<int>(5);
+    ASSERT_EQ(serialize(root), "1 3 5 ");
+}
+TEST(SolutionFixture, test_2) {
+    node<int>* root = new node<int>(1);
+    root->left = new node<int>(3);
+    root->right = new node<int>(5);
+    root->left->left = new node<int>(12);
+    root->left->right = new node<int>(8);
+    root->right->right = new node<int>(9);
+    ASSERT_EQ(serialize(root), "1 3 5 12 8 NULL 9 ");
 }
 
