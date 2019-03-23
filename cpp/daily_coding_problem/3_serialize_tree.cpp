@@ -51,12 +51,9 @@ string serialize(const node<T>* root) {
             ++null_counter;
             if(null_counter == 2<<(depth-2)) {
                 break;
-                cout << "BRUNK" << endl;
             }
         }
         else {
-            cout << current_node->data << endl;
-            cout << null_counter << endl;
             while(null_counter > 0) {
                 serial << "NULL ";
                 --null_counter;
@@ -65,7 +62,7 @@ string serialize(const node<T>* root) {
             if(current_node->left != nullptr) {
                 left_node = current_node->left;
             }
-            if(current_node->left != nullptr) {
+            if(current_node->right != nullptr) {
                 right_node = current_node->right;
             }
 
