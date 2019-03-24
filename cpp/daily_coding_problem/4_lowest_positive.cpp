@@ -5,6 +5,7 @@
 #include <algorithm>
 
 #include "gtest/gtest.h"
+#include "test/helpers.h"
 
 using namespace std;
 
@@ -24,8 +25,24 @@ using namespace std;
 
 // Solution Function
 // [1,5,2,4]
-int lowest_positive(const vector<int> &vec) {
-    return 1;
+int lowest_positive(vector<int> vec) {
+    // swapping algorithm to filter out invalid values
+    // should push all values less than 1 to the back
+    vector<int>::reverse_iterator swap_spot(vec.rbegin());
+    for(vector<int>::reverse_iterator curr(vec.rbegin()); curr != vec.rend(); ++curr) {
+        if(*curr < 1) {
+            int tmp = *curr;
+            *curr = *swap_spot;
+            *swap_spot = tmp;
+            ++swap_spot;
+        }
+    } 
+    // point to the first invalid value (one after last good value, like end(vec))
+    vector<int>::iterator new_end(swap_spot.base());
+    
+    cout << vec_string(vec) << endl;
+
+    return 0;
 }
 
 TEST(SolutionFixture, test_1) {
@@ -35,4 +52,12 @@ TEST(SolutionFixture, test_1) {
 TEST(SolutionFixture, test_2) {
     vector<int> vec = {1,2,0};
     ASSERT_EQ(lowest_positive(vec), 3);
+}
+TEST(SolutionFixture, test_3) {
+    vector<int> vec = {10,25,50};
+    ASSERT_EQ(lowest_positive(vec), 1);
+}
+TEST(SolutionFixture, test_4) {
+    vector<int> vec = {4,-1,-4,3,1,9,-3,0};
+    ASSERT_EQ(lowest_positive(vec), 2);
 }
