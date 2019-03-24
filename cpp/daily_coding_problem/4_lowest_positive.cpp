@@ -28,8 +28,8 @@ using namespace std;
 int lowest_positive(vector<int> vec) {
     // swapping algorithm to filter out invalid values
     // should push all values less than 1 to the back
-    vector<int>::reverse_iterator swap_spot(vec.rbegin());
-    for(vector<int>::reverse_iterator curr(vec.rbegin()); curr != vec.rend(); ++curr) {
+    vector<int>::reverse_iterator swap_spot(rbegin(vec));
+    for(vector<int>::reverse_iterator curr(rbegin(vec)); curr != rend(vec); ++curr) {
         if(*curr < 1) {
             int tmp = *curr;
             *curr = *swap_spot;
@@ -39,10 +39,23 @@ int lowest_positive(vector<int> vec) {
     } 
     // point to the first invalid value (one after last good value, like end(vec))
     vector<int>::iterator new_end(swap_spot.base());
-    
+
     cout << vec_string(vec) << endl;
 
-    return 0;
+    for(vector<int>::iterator curr(begin(vec)); curr != new_end; ++curr) {
+        if(*curr < vec.size() && vec[*curr] > 0) {
+            vec[*curr] *= -1;
+        }
+    }
+
+    cout << vec_string(vec) << endl;
+
+    for(int i = 0; i < (new_end - begin(vec)); ++i) {
+        if(vec[i] > 0) {
+            return i+2;
+        }
+    }
+    return new_end - begin(vec) + 2;    
 }
 
 TEST(SolutionFixture, test_1) {
@@ -60,4 +73,12 @@ TEST(SolutionFixture, test_3) {
 TEST(SolutionFixture, test_4) {
     vector<int> vec = {4,-1,-4,3,1,9,-3,0};
     ASSERT_EQ(lowest_positive(vec), 2);
+}
+TEST(SolutionFixture, test_5) {
+    vector<int> vec = {1,2,3};
+    ASSERT_EQ(lowest_positive(vec), 4);
+}
+TEST(SolutionFixture, test_6) {
+    vector<int> vec = {-1,2,3,1};
+    ASSERT_EQ(lowest_positive(vec), 4);
 }
