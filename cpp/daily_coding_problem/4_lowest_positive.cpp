@@ -3,6 +3,7 @@
 #include <sstream>
 #include <vector>
 #include <algorithm>
+#include <cmath>
 
 #include "gtest/gtest.h"
 #include "test/helpers.h"
@@ -40,22 +41,18 @@ int lowest_positive(vector<int> vec) {
     // point to the first invalid value (one after last good value, like end(vec))
     vector<int>::iterator new_end(swap_spot.base());
 
-    cout << vec_string(vec) << endl;
-
     for(vector<int>::iterator curr(begin(vec)); curr != new_end; ++curr) {
-        if(*curr < vec.size() && vec[*curr] > 0) {
-            vec[*curr] *= -1;
+        if((size_t)abs(*curr) <= vec.size()) {
+            vec[abs(*curr)-1] *= -1;
         }
     }
-
-    cout << vec_string(vec) << endl;
 
     for(int i = 0; i < (new_end - begin(vec)); ++i) {
         if(vec[i] > 0) {
-            return i+2;
+            return i+1;
         }
     }
-    return new_end - begin(vec) + 2;    
+    return new_end - begin(vec) + 1;    
 }
 
 TEST(SolutionFixture, test_1) {
@@ -81,4 +78,16 @@ TEST(SolutionFixture, test_5) {
 TEST(SolutionFixture, test_6) {
     vector<int> vec = {-1,2,3,1};
     ASSERT_EQ(lowest_positive(vec), 4);
+}
+TEST(SolutionFixture, test_7) {
+    vector<int> vec = {6,5,4,3,2,1};
+    ASSERT_EQ(lowest_positive(vec), 7);
+}
+TEST(SolutionFixture, test_8) {
+    vector<int> vec = {1,2,3,4,5,6};
+    ASSERT_EQ(lowest_positive(vec), 7);
+}
+TEST(SolutionFixture, test_9) {
+    vector<int> vec = {5,1,6,4,2,3};
+    ASSERT_EQ(lowest_positive(vec), 7);
 }
