@@ -30,15 +30,51 @@ if [ "$#" -eq 1 ]; then
         rm *.out
         exit
     fi
+    EXTENTION="${TARGET_FILE##*.}"
 elif [ "$#" -eq 2 ]; then
     TARGET_FILE=$2
+    EXTENTION="${TARGET_FILE##*.}"
         case "$1" in
                 create)
-                    echo "We are gonna create $TARGET_FILE"
+                    echo "Creating $TARGET_FILE"
+                    case "$EXTENTION" in
+                        cpp)
+                            echo MAKING A CPP FILE
+                            ;;
+                        py)
+                            echo PYTHON NOT YET IMPLEMENTED
+                            exit 1
+                            ;;
+                        java)
+                            echo JAVA NOT YET IMPLEMENTED
+                            exit 1
+                            ;;
+                        *)
+                            echo INVALID FILE EXTENTION
+                            exit 1
+                            ;;
+                    esac
                     ;;
 
                 debug)
-                    echo "we are gonna run $TARGET_FILE in debug mode"
+                    echo "DEBUGGING $TARGET_FILE"
+                    case "$EXTENTION" in
+                        cpp)
+                            echo DEBUGGING A CPP FILE
+                            ;;
+                        py)
+                            echo PYTHON NOT YET IMPLEMENTED
+                            exit 1
+                            ;;
+                        java)
+                            echo JAVA NOT YET IMPLEMENTED
+                            exit 1
+                            ;;
+                        *)
+                            echo INVALID FILE EXTENTION
+                            exit 1
+                            ;;
+                    esac
                     ;;
                 *)
                    echo "INVALID USAGE, FIRST PARAM MUST BE {clean|create|debug}"
@@ -46,8 +82,25 @@ elif [ "$#" -eq 2 ]; then
                    ;; 
         esac
 else
-    echo No command given
+    echo NO VALID COMMAND GIVEN
     exit 1
 fi
 
-echo $TARGET_FILE
+echo RUNNING $TARGET_FILE
+case "$EXTENTION" in
+    cpp)
+        echo RUNNING A CPP FILE
+        ;;
+    py)
+        echo PYTHON NOT YET IMPLEMENTED
+        exit 1
+        ;;
+    java)
+        echo JAVA NOT YET IMPLEMENTED
+        exit 1
+        ;;
+    *)
+        echo INVALID FILE EXTENTION
+        exit 1
+        ;;
+esac
