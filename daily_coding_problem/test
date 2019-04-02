@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# Run this to execute files
+
+# Options
+# create - create a new file
+# debug - run in debug mode
+# clean - clean all output files
+
+# set -x
+
+if [ "$(uname)" == "Darwin" ]; then
+SCRIPT_PATH=$(cd "$(dirname "$0")"; pwd)
+else
+SCRIPT_PATH=$(dirname $(readlink -f $0))
+fi
+cd $SCRIPT_PATH
+
+CC="g++"
+STD_FLAG="-std=c++14"
+WARNING_FLAGS="-pedantic -Wall -Weffc++ -Wextra"
+CFLAGS="$STD_FLAG $WARNING_FLAGS"
+GTEST_FLAGS="-lgtest -lgtest_main -pthread"
+GDB_FLAGS="-g -O0"
+
+if [ "$#" -eq 1 ]; then
+    TARGET_FILE=$1
+    if [ "$TARGET_FILE" == "clean" ]; then
+        echo cleaning up
+        rm *.out
+        exit
+    fi
+elif [ "$#" -eq 2 ]; then
+    TARGET_FILE=$2
+        case "$1" in
+                create)
+                    echo "We are gonna create $TARGET_FILE"
+                    ;;
+
+                debug)
+                    echo "we are gonna run $TARGET_FILE in debug mode"
+                    ;;
+                *)
+                   echo "INVALID USAGE, FIRST PARAM MUST BE {clean|create|debug}"
+                   exit 1
+                   ;; 
+        esac
+else
+    echo No command given
+    exit 1
+fi
+
+echo $TARGET_FILE
