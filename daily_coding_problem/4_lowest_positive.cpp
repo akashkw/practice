@@ -6,7 +6,7 @@
 #include <cmath>
 
 #include "gtest/gtest.h"
-#include "test/helpers.h"
+#include "cpp/helpers.h"
 
 using namespace std;
 

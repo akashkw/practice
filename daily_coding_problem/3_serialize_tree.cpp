@@ -9,7 +9,7 @@
 
 #include "gtest/gtest.h"
 
-#include "test/structures.h"
+#include "cpp/structures.h"
 
 using namespace std;
 

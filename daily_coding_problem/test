@@ -23,11 +23,15 @@ CFLAGS="$STD_FLAG $WARNING_FLAGS"
 GTEST_FLAGS="-lgtest -lgtest_main -pthread"
 GDB_FLAGS="-g -O0"
 
+PYTHON="python3"
+UNITTEST_FLAGS="-m unittest"
+
 if [ "$#" -eq 1 ]; then
     TARGET_FILE=$1
     if [ "$TARGET_FILE" == "clean" ]; then
         echo cleaning up
         rm *.out
+        rm -rf __pycache__
         exit
     fi
     EXTENTION="${TARGET_FILE##*.}"
@@ -39,11 +43,10 @@ elif [ "$#" -eq 2 ]; then
                     echo "Creating $TARGET_FILE"
                     case "$EXTENTION" in
                         cpp)
-                            echo MAKING A CPP FILE
+                            cp cpp/template.cpp ./$TARGET_FILE
                             ;;
                         py)
-                            echo PYTHON NOT YET IMPLEMENTED
-                            exit 1
+                            cp python/template.py ./$TARGET_FILE
                             ;;
                         java)
                             echo JAVA NOT YET IMPLEMENTED
@@ -57,13 +60,16 @@ elif [ "$#" -eq 2 ]; then
                     ;;
 
                 debug)
-                    echo "DEBUGGING $TARGET_FILE"
+                    echo "Debugging $TARGET_FILE"
                     case "$EXTENTION" in
                         cpp)
-                            echo DEBUGGING A CPP FILE
+                            $CC $CFLAGS $GDB_FLAGS $TARGET_FILE -o $BASENAME.out $GTEST_FLAGS
+                            gdb $BASENAME.out
+                            rm $BASENAME.out
+                            exit
                             ;;
                         py)
-                            echo PYTHON NOT YET IMPLEMENTED
+                            echo PYTHON DEBUGGING NOT YET IMPLEMENTED
                             exit 1
                             ;;
                         java)
@@ -86,14 +92,17 @@ else
     exit 1
 fi
 
-echo RUNNING $TARGET_FILE
+echo Running $TARGET_FILE
+BASENAME="${TARGET_FILE%.*}"
 case "$EXTENTION" in
     cpp)
-        echo RUNNING A CPP FILE
+        $CC $CFLAGS $TARGET_FILE -o $BASENAME.out $GTEST_FLAGS
+        ./$BASENAME.out
+        rm $BASENAME.out
         ;;
     py)
-        echo PYTHON NOT YET IMPLEMENTED
-        exit 1
+        $PYTHON $UNITTEST_FLAGS $TARGET_FILE
+        rm -rf __pycache__
         ;;
     java)
         echo JAVA NOT YET IMPLEMENTED
