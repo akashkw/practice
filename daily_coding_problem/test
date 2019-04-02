@@ -29,9 +29,11 @@ UNITTEST_FLAGS="-m unittest"
 if [ "$#" -eq 1 ]; then
     TARGET_FILE=$1
     if [ "$TARGET_FILE" == "clean" ]; then
-        echo cleaning up
-        rm *.out
+        echo Cleaning up...
+        rm -f *.out
+        rm -f *.pyc
         rm -rf __pycache__
+        echo Clean up successful!
         exit
     fi
     EXTENTION="${TARGET_FILE##*.}"
@@ -40,7 +42,7 @@ elif [ "$#" -eq 2 ]; then
     EXTENTION="${TARGET_FILE##*.}"
         case "$1" in
                 create)
-                    echo "Creating $TARGET_FILE"
+                    echo "Creating $TARGET_FILE..."
                     case "$EXTENTION" in
                         cpp)
                             cp cpp/template.cpp ./$TARGET_FILE
@@ -57,20 +59,19 @@ elif [ "$#" -eq 2 ]; then
                             exit 1
                             ;;
                     esac
+                    echo "$TARGET_FILE created!"
                     ;;
 
                 debug)
-                    echo "Debugging $TARGET_FILE"
+                    echo "Debugging $TARGET_FILE..."
                     case "$EXTENTION" in
                         cpp)
                             $CC $CFLAGS $GDB_FLAGS $TARGET_FILE -o $BASENAME.out $GTEST_FLAGS
                             gdb $BASENAME.out
-                            rm $BASENAME.out
-                            exit
                             ;;
                         py)
-                            echo PYTHON DEBUGGING NOT YET IMPLEMENTED
-                            exit 1
+                            echo "Make sure you have uncommented pdb.set_trace() in each test you wish to debug"
+                            $PYTHON $UNITTEST_FLAGS $TARGET_FILE
                             ;;
                         java)
                             echo JAVA NOT YET IMPLEMENTED
@@ -81,14 +82,17 @@ elif [ "$#" -eq 2 ]; then
                             exit 1
                             ;;
                     esac
+                    echo "Finished debugging $TARGET_FILE!"
+                    ./test clean
+                    exit
                     ;;
                 *)
-                   echo "INVALID USAGE, FIRST PARAM MUST BE {clean|create|debug}"
+                   echo "INVALID USAGE, FIRST PARAM MUST BE {clean|create|debug|file_to_run}"
                    exit 1
                    ;; 
         esac
 else
-    echo NO VALID COMMAND GIVEN
+    echo "INVALID USAGE, FIRST PARAM MUST BE {clean|create|debug|file_to_run}"
     exit 1
 fi
 
@@ -98,11 +102,9 @@ case "$EXTENTION" in
     cpp)
         $CC $CFLAGS $TARGET_FILE -o $BASENAME.out $GTEST_FLAGS
         ./$BASENAME.out
-        rm $BASENAME.out
         ;;
     py)
         $PYTHON $UNITTEST_FLAGS $TARGET_FILE
-        rm -rf __pycache__
         ;;
     java)
         echo JAVA NOT YET IMPLEMENTED
@@ -113,3 +115,5 @@ case "$EXTENTION" in
         exit 1
         ;;
 esac
+echo Finished running $TARGET_FILE
+./test clean
