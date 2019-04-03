@@ -26,6 +26,16 @@ GDB_FLAGS="-g -O0"
 PYTHON="python3"
 UNITTEST_FLAGS="-m unittest"
 
+help() {
+    echo "SUPPORTED LANGUAGES ARE CPP AND PYTHON"
+    echo "USAGE: "
+    echo "  $ ./test help"
+    echo "  $ ./test clean"
+    echo "  $ ./test <file_to_run>"
+    echo "  $ ./test create <file_to_create>"
+    echo "  $ ./test debug <file_to_debug>"
+}
+
 if [ "$#" -eq 1 ]; then
     TARGET_FILE=$1
     if [ "$TARGET_FILE" == "clean" ]; then
@@ -34,6 +44,10 @@ if [ "$#" -eq 1 ]; then
         rm -f *.pyc
         rm -rf __pycache__
         echo Clean up successful!
+        exit
+    fi
+    if [ "$TARGET_FILE" == "help" ]; then
+        help
         exit
     fi
     EXTENTION="${TARGET_FILE##*.}"
@@ -52,10 +66,12 @@ elif [ "$#" -eq 2 ]; then
                             ;;
                         java)
                             echo JAVA NOT YET IMPLEMENTED
+                            help
                             exit 1
                             ;;
                         *)
                             echo INVALID FILE EXTENTION
+                            help
                             exit 1
                             ;;
                     esac
@@ -75,10 +91,12 @@ elif [ "$#" -eq 2 ]; then
                             ;;
                         java)
                             echo JAVA NOT YET IMPLEMENTED
+                            help
                             exit 1
                             ;;
                         *)
                             echo INVALID FILE EXTENTION
+                            help
                             exit 1
                             ;;
                     esac
@@ -87,12 +105,14 @@ elif [ "$#" -eq 2 ]; then
                     exit
                     ;;
                 *)
-                   echo "INVALID USAGE, FIRST PARAM MUST BE {clean|create|debug|file_to_run}"
+                   echo "INVALID USAGE"
+                   help
                    exit 1
                    ;; 
         esac
 else
-    echo "INVALID USAGE, FIRST PARAM MUST BE {clean|create|debug|file_to_run}"
+    echo "INVALID USAGE"
+    help
     exit 1
 fi
 
@@ -108,10 +128,12 @@ case "$EXTENTION" in
         ;;
     java)
         echo JAVA NOT YET IMPLEMENTED
+        help
         exit 1
         ;;
     *)
         echo INVALID FILE EXTENTION
+        help
         exit 1
         ;;
 esac
