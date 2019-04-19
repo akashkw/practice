@@ -24,6 +24,43 @@ using namespace std;
  * that converts between nodes and memory addresses.
  */
 
+template <typename T>
+class xor_linked_list {
+ private:
+    struct xll_node { T _data; xll_node* _both; };
+    xll_node *_head;
+ public:
+    xor_linked_list() : _head(nullptr) {}
+    void insert(const T &val) {
+        if(_head == nullptr) {
+            _head = new xll_node({val, nullptr});
+        }
+        else {
+            xll_node* current_node = _head;
+            xll_node* prev_node = nullptr;
+            while(current_node->_both != nullptr) {
+                xll_node* next_node = (xll_node*)((uintptr_t)current_node->_both ^ (uintptr_t)prev_node);
+                prev_node = current_node;
+                current_node = next_node;
+            }
+            xll_node* new_node = new xll_node({val, nullptr});
+            current_node->_both = (xll_node*)((uintptr_t)prev_node ^ (uintptr_t)new_node);
+        }
+    }
+
+    T get(const size_t &i) {
+        size_t current_index = 0;
+        xll_node* current_node = _head;
+        xll_node* prev_node = nullptr;
+        while(current_index++ != i) {
+            xll_node* next_node = (xll_node*)((uintptr_t)current_node->_both ^ (uintptr_t)prev_node);
+            prev_node = current_node;
+            current_node = next_node;
+        }
+        return current_node->_data;
+    }
+};
+
 
 TEST(SolutionFixture, test_1) {
     xor_linked_list<int> xll;
@@ -44,18 +81,18 @@ TEST(SolutionFixture, test_3) {
     xor_linked_list<string> xll;
     xll.insert("hello");
     xll.insert("world");
-    ASSERT_EQ(xll.get(1), "hello");
+    ASSERT_EQ(xll.get(0), "hello");
 }
 
 TEST(SolutionFixture, test_4) {
     xor_linked_list<string> xll;
     xll.insert("hello");
     xll.insert("world");
-    ASSERT_EQ(xll.get(1), "hello");
+    ASSERT_EQ(xll.get(1), "world");
 }
 
-TEST(SolutionFixture, test_4) {
-    struct person {string name; int age;}
+TEST(SolutionFixture, test_5) {
+    struct person {string name; int age;};
     xor_linked_list<person> xll;
     xll.insert({"akash", 21});
     xll.insert({"sue anne", 22});
