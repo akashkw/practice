@@ -24,12 +24,43 @@ using namespace std;
  * that converts between nodes and memory addresses.
  */
 
-// Solution Function
-bool solution(int num) {
-    return num;
-}
 
 TEST(SolutionFixture, test_1) {
-    ASSERT_TRUE(solution(1));
+    xor_linked_list<int> xll;
+    xll.insert(2);
+    ASSERT_EQ(xll.get(0), 2);
 }
 
+
+TEST(SolutionFixture, test_2) {
+    xor_linked_list<int> xll;
+    xll.insert(2);
+    xll.insert(3);
+    xll.insert(4);
+    ASSERT_EQ(xll.get(2), 4);
+}
+
+TEST(SolutionFixture, test_3) {
+    xor_linked_list<string> xll;
+    xll.insert("hello");
+    xll.insert("world");
+    ASSERT_EQ(xll.get(1), "hello");
+}
+
+TEST(SolutionFixture, test_4) {
+    xor_linked_list<string> xll;
+    xll.insert("hello");
+    xll.insert("world");
+    ASSERT_EQ(xll.get(1), "hello");
+}
+
+TEST(SolutionFixture, test_4) {
+    struct person {string name; int age;}
+    xor_linked_list<person> xll;
+    xll.insert({"akash", 21});
+    xll.insert({"sue anne", 22});
+    ASSERT_EQ(xll.get(0).name, "akash");
+    ASSERT_EQ(xll.get(1).name, "sue anne");
+    ASSERT_EQ(xll.get(0).age, 21);
+    ASSERT_EQ(xll.get(1).age, 22);
+}
