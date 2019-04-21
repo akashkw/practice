@@ -21,14 +21,12 @@ using namespace std;
  */
 
 int num_ways_at_index(const size_t &i, const string &str, vector<int> &dp) {
-    if(i >= str.size()-1) {
+    if(i >= str.size()-1)
         return 1;
-    }
     if(dp[i] == 0) {
-        if(i < str.size()-1 && (str[i] == '1' || (str[i] == '2' && (str[i+1] >= '1' && str[i+1] <= '6')))) {
-            dp[i] += num_ways_at_index(i + 2, str, dp);
-        }
-        dp[i] += num_ways_at_index(i + 1, str, dp);
+        dp[i] += num_ways_at_index(i+1, str, dp);
+        if(i < str.size()-1 && (str[i] == '1' || (str[i] == '2' && (str[i+1] >= '1' && str[i+1] <= '6'))))
+            dp[i] += num_ways_at_index(i+2, str, dp);
     }
     return dp[i];
 }
