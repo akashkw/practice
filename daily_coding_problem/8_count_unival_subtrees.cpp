@@ -30,9 +30,26 @@ using namespace std;
          1   1 
  */
 
+bool is_unival_subtree(const node<int>* const &root, const int &val) {
+    if(!root)
+        return true;
+    if(root->data != val)
+        return false;
+    return is_unival_subtree(root->left, val) && is_unival_subtree(root->right, val);
+}
+
 // Solution Function
 int count_unival_subtrees(const node<int>* const &root) {
-    return 1;
+    if(!root)
+        return 0;
+    if(!root->left && !root->right)
+        return 1;
+    int count = 0;
+    count += count_unival_subtrees(root->left);
+    count += count_unival_subtrees(root->right);
+    if(is_unival_subtree(root->left, root->data) && is_unival_subtree(root->right, root->data))
+            count += 1;
+    return count;
 }
 
 TEST(SolutionFixture, test_1) {
@@ -54,8 +71,7 @@ TEST(SolutionFixture, test_3) {
     root->right = new node<int>(0);
     root->right->left = new node<int>(1);
     root->right->right = new node<int>(0);
-    root->right->left->left = new node<int>(1);
-    root->right->left->right = new node<int>(1);
+    root->right->left->left = new node<int>(1); root->right->left->right = new node<int>(1);
     ASSERT_EQ(count_unival_subtrees(root), 5);
     delete root;
 }
