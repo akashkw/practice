@@ -20,9 +20,23 @@ using namespace std;
  * You can assume that the messages are decodable. For example, '001' is not allowed.
  */
 
+int num_ways_at_index(const size_t &i, const string &str, vector<int> &dp) {
+    if(i >= str.size()-1) {
+        return 1;
+    }
+    if(i < str.size()-1 && (str[i] == '1' || (str[i] == '2' && (str[i+1] >= '1' && str[i+1] <= '6')))) {
+        return num_ways_at_index(i + 1, str, dp) + num_ways_at_index(i + 2, str, dp);
+        
+    }
+    else {
+        return num_ways_at_index(i + 1, str, dp);
+    }
+}
+
 // Solution Function
 int count_decodings(const string &str) {
-    return 0;
+    vector<int> dp(str.size());
+    return num_ways_at_index(0, str, dp);
 }
 
 TEST(SolutionFixture, test_1) {
