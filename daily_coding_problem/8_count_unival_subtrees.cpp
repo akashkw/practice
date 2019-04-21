@@ -5,6 +5,7 @@
 #include <algorithm>
 
 #include "gtest/gtest.h"
+#include "cpp/structures.h"
 
 using namespace std;
 
@@ -30,11 +31,13 @@ using namespace std;
  */
 
 // Solution Function
-bool solution(int num) {
-    return num;
+int count_unival_subtrees(const node<int>* const &root) {
+    return 1;
 }
 
 TEST(SolutionFixture, test_1) {
-    ASSERT_TRUE(solution(1));
+    node<int>* root = new node<int>(5);
+    ASSERT_EQ(count_unival_subtrees(root), 1);
+    delete root;
 }
 
