@@ -32,9 +32,9 @@ int lowest_positive(vector<int> vec) {
     vector<int>::reverse_iterator swap_spot(rbegin(vec));
     for(vector<int>::reverse_iterator curr(rbegin(vec)); curr != rend(vec); ++curr) {
         if(*curr < 1) {
-            int tmp = *curr;
-            *curr = *swap_spot;
-            *swap_spot = tmp;
+            *curr ^= *swap_spot;
+            *swap_spot ^= *curr;
+            *curr ^= *swap_spot;
             ++swap_spot;
         }
     } 
