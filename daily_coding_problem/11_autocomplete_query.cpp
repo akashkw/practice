@@ -72,3 +72,27 @@ TEST(SolutionFixture, test_1) {
     vector<string> sol = autocomplete("de", dict);
     ASSERT_EQ(sol, vector<string>({"deal", "deer"}));
 }
+
+TEST(SolutionFixture, test_2) {
+    vector<string> dict = {"the", "quick", "brown", "fox"};
+    vector<string> sol = autocomplete("b", dict);
+    ASSERT_EQ(sol, vector<string>({"brown"}));
+}
+
+TEST(SolutionFixture, test_3) {
+    vector<string> dict = {"akash", "andrew", "avery", "aaron", "jaxon", "sue anne"};
+    vector<string> sol = autocomplete("a", dict);
+    ASSERT_EQ(sol, vector<string>({"aaron", "akash", "andrew", "avery"}));
+}
+
+TEST(SolutionFixture, test_4) {
+    vector<string> dict = {"akash", "andrew", "avery", "aaron", "jaxon", "sue anne"};
+    vector<string> sol = autocomplete("s", dict);
+    ASSERT_EQ(sol, vector<string>({"sue anne"}));
+}
+
+TEST(SolutionFixture, test_5) {
+    vector<string> dict = {"maroon 5", "macklemore", "metallica"};
+    vector<string> sol = autocomplete("ma", dict);
+    ASSERT_EQ(sol, vector<string>({"macklemore", "maroon 5"}));
+}
