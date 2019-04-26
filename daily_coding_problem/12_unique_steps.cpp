@@ -31,44 +31,40 @@ using namespace std;
  * 
  */
 
-int unique_steps_dp(vector<int> &dp, int index) {
-    if(index == 0 || index == -1)
+int unique_steps_dp(vector<int> &dp, const size_t &index) {
+    if(index == dp.size())
         return 1;
     if(dp[index])
         return dp[index];
-    if(index - 2 >= -1)
-        dp[index] += unique_steps_dp(dp, index - 2);
-    if(index - 1 >= -1)
-        dp[index] += unique_steps_dp(dp, index - 1);
+    if(index + 1 <= dp.size())
+        dp[index] += unique_steps_dp(dp, index + 1);
+    if(index + 2 <= dp.size())
+        dp[index] += unique_steps_dp(dp, index + 2);
     return dp[index];
 }
 // Solution Function
 int unique_steps(int n) {
-    if(n <= 1)
-        return 1;
-    vector<int> dp (n, 0);
-    unique_steps_dp(dp, n-1);
-    return dp.back();
+    vector<int> dp(n, 0);
+    unique_steps_dp(dp, 0);
+    return dp[0]; 
 }
 
-int unique_steps_custom_dp(vector<int> &dp, const vector<int> &step_sizes, int index) {
-    if(index == 0 || index == -1)
+int unique_steps_custom_dp(vector<int> &dp, const vector<int> &step_sizes, const size_t &index) {
+    if(index == dp.size())
         return 1;
     if(dp[index])
         return dp[index];
     for(const int &step : step_sizes) {
-        if(index - step >= -1)
-            dp[index] += unique_steps_custom_dp(dp, step_sizes, index - step);
+        if(index + step <= dp.size())
+            dp[index] += unique_steps_custom_dp(dp, step_sizes, index + step);
     }
     return dp[index];
 }
 // Solution Function
 int unique_steps_custom(int n, const vector<int> &step_sizes) {
-    if(n <= 1)
-        return 1;
-    vector<int> dp (n, 0);
-    unique_steps_custom_dp(dp, step_sizes, n-1);
-    return dp.back();
+    vector<int> dp(n, 0);
+    unique_steps_custom_dp(dp, step_sizes, 0);
+    return dp[0];
 }
 TEST(SolutionFixture, test_1) {
     ASSERT_EQ(unique_steps(4), 5);
