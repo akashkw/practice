@@ -138,4 +138,4 @@ case "$EXTENTION" in
         ;;
 esac
 echo Finished running $TARGET_FILE
-./test clean
+./atest clean
